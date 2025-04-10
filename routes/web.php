@@ -462,6 +462,19 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('addRechargeAmount', [RechargeController::class, 'addRechargeAmount'])->name('addRechargeAmount');
         Route::post('editRechargeAmount', [RechargeController::class, 'editRechargeAmount'])->name('editRechargeAmount');
         Route::get('contactlist', [AppFeedbackController::class, 'contactList'])->name('contactlist');
+        Route::get('appointmentlist', [AppFeedbackController::class, 'appointmentList'])->name('appointmentlist');
+        Route::get('/appointment/{id}', [AppFeedbackController::class, 'appointmentShow'])->name('appointmentshow');
+        Route::get('servicelist', [AppFeedbackController::class, 'serviceList'])->name('servicelist');
+        Route::get('serviceshow/{id}', [AppFeedbackController::class, 'serviceShow'])->name('serviceshow');
+        Route::post('serviceupdate/{id}', [AppFeedbackController::class, 'serviceUpdate'])->name('serviceupdate');
+        Route::get('serviceadd', [AppFeedbackController::class, 'serviceAdd'])->name('serviceadd');
+        Route::post('serviceadd', [AppFeedbackController::class, 'serviceAddApi'])->name('serviceaddApi');
+        Route::delete('servicedelete/{id}', [AppFeedbackController::class, 'serviceDelete'])->name('servicedelete');
+
+        Route::get('remotebookinglist', [AppFeedbackController::class, 'remotebookingList'])->name('remotebookinglist');
+        Route::get('/remotebookinglist/{id}', [AppFeedbackController::class, 'remotebookingShow'])->name('remotebookingshow');
+
+
         Route::get('404', function () {
             return view('pages/404');
         });
@@ -534,6 +547,13 @@ Route::get('terms-condition', [FrontendPageManagementController::class, 'termsco
 Route::get('aboutus', [FrontendPageManagementController::class, 'aboutus'])->name('front.aboutus');
 Route::get('contact', [FrontendPageManagementController::class, 'contactUS'])->name('front.contact');
 Route::post('savecontactUS', [FrontendPageManagementController::class, 'SavecontactUS'])->name('front.store.contact');
+Route::get('remotebooking', [FrontendPageManagementController::class, 'remoteBooking'])->name('front.remotebooking');
+Route::post('saveRemoteBooking', [FrontendPageManagementController::class, 'saveRemoteBooking'])->name('front.store.remotebooking');
+Route::get('appointment', [FrontendPageManagementController::class, 'appointment'])->name('front.appointment');
+Route::post('saveAppointment', [FrontendPageManagementController::class, 'saveAppointment'])->name('front.store.appointment');
+
+Route::get('/services', [FrontendPageManagementController::class, 'services'])->name('front.services');
+Route::get('/services/{id}', [FrontendPageManagementController::class, 'serviceShow'])->name('front.services.show');
 
 
 Route::get('/astrologer/{id?}/stories', [HomeController::class, 'getAstrologerStories'])->name('front.getAstrologerStories');

@@ -12,7 +12,7 @@
         $logo = DB::table('systemflag')->where('name', 'AdminLogo')->select('value')->first();
     @endphp
     <div style=" display: grid;
-    grid-template-columns: auto auto ;">
+grid-template-columns: auto auto ;">
         <div style="display: inline-block">
             <div style="height:100px;width:100px;margin-bottom:10px">
                 <img alt="AstroGuru image" class="logo__image w-6" src="{{ env('APP_URL') . '/' . $logo->value }}"

@@ -3,8 +3,8 @@
 
 <head>
     @php
-    $logo = DB::table('systemflag')->where('name', 'AdminLogo')->select('value')->first();
-@endphp
+        $logo = DB::table('systemflag')->where('name', 'AdminLogo')->select('value')->first();
+    @endphp
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta
@@ -32,7 +32,7 @@
     <link href="index.html" rel="canonical" />
 
 
-    <link href="{{asset($logo->value)}}" rel="shortcut icon" type="image/x-icon" />
+    <link href="{{ asset($logo->value) }}" rel="shortcut icon" type="image/x-icon" />
 
 
     <link rel="preconnect" as="font"
@@ -71,12 +71,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <link rel="preload" href="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit" as="script">
+    <link rel="preload" href="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"
+        as="script">
     <style>
-        body.Is-Offer{
+        body.Is-Offer {
             top: 0px !important;
         }
     </style>
+    <link rel="stylesheet" href={{ asset('public/frontend/css/app.css') }}>
 
 
 </head>
@@ -125,7 +127,7 @@
 
 @php
     use Illuminate\Support\Facades\DB;
-    $webLanguage=DB::table('systemflag')->where('name','WebLanguage')->first();
+    $webLanguage = DB::table('systemflag')->where('name', 'WebLanguage')->first();
     $selectedLanguages = json_decode($webLanguage->value, true) ?: [];
     $includedLanguages = implode(',', $selectedLanguages);
 @endphp
@@ -134,43 +136,42 @@
 
 
 <script>
-        (function() {
-            // Check if the script is already loaded
-            if (typeof google === 'undefined' || !google.translate || !google.translate.TranslateElement) {
-                var gtScript = document.createElement('script');
-                gtScript.type = 'text/javascript';
-                gtScript.async = true;
-                gtScript.defer = true;
-                gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateInit';
-                document.head.appendChild(gtScript);
-            } else {
-                console.log('Google Translate script is already loaded.');
-            }
-        })();
-
-        var translateInitialized = false;
-
-        function googleTranslateInit() {
-            if (translateInitialized) {
-                console.log('Google Translate already initialized.');
-                return; // Prevent multiple initializations
-            }
-
-            try {
-                // console.log('Initializing Google Translate...');
-                new google.translate.TranslateElement(
-                    {
-                        pageLanguage: 'en',
-                        includedLanguages: '{{ $includedLanguages }}',
-                    },
-                    'google_translate_button'
-                );
-                translateInitialized = true; // Mark as initialized
-                // console.log('Google Translate initialized successfully.');
-            } catch (error) {
-                console.error('Google Translate failed to initialize:', error);
-            }
+    (function() {
+        // Check if the script is already loaded
+        if (typeof google === 'undefined' || !google.translate || !google.translate.TranslateElement) {
+            var gtScript = document.createElement('script');
+            gtScript.type = 'text/javascript';
+            gtScript.async = true;
+            gtScript.defer = true;
+            gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateInit';
+            document.head.appendChild(gtScript);
+        } else {
+            console.log('Google Translate script is already loaded.');
         }
-    </script>
+    })();
+
+    var translateInitialized = false;
+
+    function googleTranslateInit() {
+        if (translateInitialized) {
+            console.log('Google Translate already initialized.');
+            return; // Prevent multiple initializations
+        }
+
+        try {
+            // console.log('Initializing Google Translate...');
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: '{{ $includedLanguages }}',
+                },
+                'google_translate_button'
+            );
+            translateInitialized = true; // Mark as initialized
+            // console.log('Google Translate initialized successfully.');
+        } catch (error) {
+            console.error('Google Translate failed to initialize:', error);
+        }
+    }
+</script>
 
 </html>

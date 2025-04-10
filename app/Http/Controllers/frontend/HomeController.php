@@ -97,7 +97,7 @@ class HomeController extends Controller
             ->get();
 
 
-        return view('frontend.pages.index', [
+        return view('v2.frontend.pages.index', [
             'token' => $token,
             'home_data' => $home_data,
             'liveastro' => $liveastro,

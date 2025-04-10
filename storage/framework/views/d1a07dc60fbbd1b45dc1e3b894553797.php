@@ -104,7 +104,7 @@
         role="button" aria-expanded="false" data-tw-toggle="dropdown">
         <?php if(auth()->user()): ?>
             
-            <img class="rounded-full" src="https://static-00.iconduck.com/assets.00/profile-default-icon-512x511-v4sw4m29.png"
+            <img class="rounded-full" src="https://img.icons8.com/?size=100&id=98957&format=png&color=FFFFFF"
                 onerror="this.onerror=null;this.src=asset('images/person.png');" alt="Admin Profile" />
         <?php else: ?>
             <img class="rounded-full" src=<?php echo e(asset('images/person.png')); ?> alt="Admin Profile" />

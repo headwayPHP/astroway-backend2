@@ -16,11 +16,11 @@ define('MONTHGROUP', 'month(created_at)');
 class DashboardController extends Controller
 {
     public $path;
-	
+
 	public function termscond(Request $request)
 	{
 		try {
-  
+
             return response()->json([
                 'response' => url('terms-condition'),
                 'status' => 200,
@@ -33,10 +33,10 @@ class DashboardController extends Controller
             ], 500);
         }
 	}
-	
+
 	public function privacyPolicy(Request $request)
 	{
-		
+
         try {
 
             return response()->json([
@@ -78,7 +78,7 @@ class DashboardController extends Controller
 
                 $totalStories = DB::table('astrologer_stories')
                 ->count();
-             
+
 
                 $totalEarning = DB::table('admin_get_commissions')
                     ->sum('amount');
