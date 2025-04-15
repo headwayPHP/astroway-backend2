@@ -303,7 +303,7 @@ a.px_btn.px-btn-00 {
 
 .px_btn:hover {
     background-color: var(--color1);
-    border: 1px solid var(--secondary-color);
+    /* border: 1px solid var(--secondary-color); */
     color: var(--white-color);
 }
 
@@ -746,7 +746,7 @@ span.select2-dropdown.select2-dropdown--above,
     width: 0;
     height: 3px;
     background-color: var(--secondary-color);
-    top: 0%;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
@@ -1092,7 +1092,9 @@ body.px-indexLight .px_cart_wrapper>span .px_cartnumber {
 
 
 body.px-indexLight .px_btn:hover {
-    border-color: var(--color1);
+    /* border-color: var(--color1); */
+    scale: 1.08;
+    box-shadow: 0 0 5px var(--white-color);
     color: var(--white-color);
 }
 
@@ -1407,8 +1409,10 @@ section.px-banner-new-wrapper:before {
     background-color: var(--secondary-color);
     padding: 50px 22px;
     margin-top: 30px;
+    /* object-fit: contain; */
     border-radius: 10px;
     transition: all .3s ease-in-out;
+    /* margin: 0 auto 15px; */
 }
 
 .px_service_box:hover {
@@ -1456,6 +1460,11 @@ section.px-banner-new-wrapper:before {
     font-weight: 600;
 }
 
+.px_service_box img {
+    width: 80px !important;
+    height: 80px !important;
+}
+
 .px_service_box .px_subheading:after {
     width: 70px;
     height: 2px;
@@ -1469,8 +1478,17 @@ section.px-banner-new-wrapper:before {
 
 .px_service_box p {
     font-size: 14px;
-    line-height: 24px;
+    line-height: 24px !important;
+    height: 72px;
+    /* 3 lines × 24px line-height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* limits to 3 lines */
+    -webkit-box-orient: vertical;
 }
+
 
 .px_link {
     text-transform: capitalize;

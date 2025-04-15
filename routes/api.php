@@ -54,11 +54,11 @@ use App\Http\Controllers\API\User\UserReviewController;
 use App\Http\Controllers\API\User\WaitListController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ClientController;
 
 $session = new Session();
 $token = $session->get('token');
-header('Authorization:Bearer '.$token);
+header('Authorization:Bearer ' . $token);
 // header('Content-Type:application/json');
 header('Accept:application/json');
 /*
@@ -200,6 +200,13 @@ Route::post('getAstromallProduct', [AstromallProductController::class, 'getAstro
 Route::post('getAstromallProductById', [AstromallProductController::class, 'getAstromallProductById']);
 Route::post('searchAstromallProductCategory', [AstromallProductController::class, 'searchInProductCategory']);
 //Ads banner
+
+Route::post('/clients', [ClientController::class, 'store']);
+Route::post('/clients/{id}', [ClientController::class, 'update']);
+Route::post('/clients/delete/{id}', [ClientController::class, 'destroy']);
+Route::post('/clients/show/{id}', [ClientController::class, 'show']);
+Route::post('/clients/all', [ClientController::class, 'index'])->name('clientlist');
+
 
 //Ads video
 Route::post('getAdsVideo', [AdsVideoController::class, 'getAdsVideo']);
@@ -420,7 +427,3 @@ Route::post('getStory', [AstrologerStoryController::class, 'getStory'])->name('a
 // view Count
 Route::post('clickStory', [AstrologerStoryController::class, 'clickStory'])->name('clickStory');
 Route::post('getAstrologerStory', [AstrologerStoryController::class, 'getAstrologerStory'])->name('getAstrologerStory');
-
-
-
-

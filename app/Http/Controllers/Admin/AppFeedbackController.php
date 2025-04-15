@@ -168,9 +168,17 @@ class AppFeedbackController extends Controller
             if (Auth::guard('web')->check()) {
                 $booking = RemoteBooking::where('id', $id)->findOrFail($id);
 
+                // Check if layout map is a DWG file
+                $isDwg = false;
+                if ($booking->layout_map) {
+                    $extension = strtolower(pathinfo($booking->layout_map, PATHINFO_EXTENSION));
+                    $isDwg = ($extension === 'dwg');
+                }
+
                 return view('pages.remotebookingshow', [
                     'layout' => 'side-menu',
                     'booking' => $booking,
+                    'isDwg' => $isDwg,
                 ]);
             } else {
                 return redirect('/admin/login');
@@ -280,7 +288,7 @@ class AppFeedbackController extends Controller
 
                 $service->save();
 
-                return redirect()->back()->with('success', 'Service updated successfully');
+                return redirect()->route('servicelist')->with('success', 'Service updated successfully');
             } else {
                 return redirect('/admin/login');
             }
@@ -301,6 +309,24 @@ class AppFeedbackController extends Controller
             return dd($e->getMessage());
         }
     }
+
+    public function serviceEdit($id)
+    {
+        try {
+            if (Auth::guard('web')->check()) {
+                $service = Service::findOrFail($id);
+                return view('pages.serviceedit', [
+                    'layout' => 'side-menu',
+                    'service' => $service
+                ]);
+            } else {
+                return redirect('/admin/login');
+            }
+        } catch (\Exception $e) {
+            return dd($e->getMessage());
+        }
+    }
+
 
     public function serviceAddApi(Request $request)
     {

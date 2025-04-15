@@ -1,3 +1,14 @@
+<?php
+    $appName = \App\Models\AdminModel\SystemFlag::where('id', 47)->first();
+    $siteEmail = \App\Models\AdminModel\SystemFlag::where('id', 262)->first();
+    $siteAddress = \App\Models\AdminModel\SystemFlag::where('id', 263)->first();
+    $siteNumber = \App\Models\AdminModel\SystemFlag::where('id', 261)->first();
+    $facebook = \App\Models\AdminModel\SystemFlag::where('id', 30)->first();
+    $instagram = \App\Models\AdminModel\SystemFlag::where('id', 37)->first();
+    $youtube = \App\Models\AdminModel\SystemFlag::where('id', 29)->first();
+
+?>
+
 <section class="px_footer_wrapper">
     <div class="container">
         <div class="px_footer_inner">
@@ -5,8 +16,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="px_footer_widget">
                         <div class="px_footer_logo">
-                            <a href="index-light.html">
-                                <h2>Dhaval Zaveri</h2>
+                            <a href="<?php echo e(route('front.home')); ?>">
+                                <h2><?php echo e($appName->value); ?></h2>
                             </a>
                         </div>
                         <p>No Structural Altration, No Demolition, Vastu Fault Corrections Without Breaking A Single
@@ -15,93 +26,83 @@
                         <div class="px_share_box">
                             <p>Follow Us</p>
                             <ul>
-                                <li><a href="javascript:;"><img src="public/images/svg/facebook.svg" alt=""></a>
+                                <li><a href="<?php echo e($facebook->value); ?>"><img src="public/images/svg/facebook.svg"
+                                            alt=""></a>
                                 </li>
-                                <li><a href="javascript:;"><img src="public/images/svg/twitter.svg" alt=""></a>
+                                <li><a href="<?php echo e($instagram->value); ?>"><img src="public/images/svg/instagram.svg"
+                                            alt=""></a>
                                 </li>
-                                <li><a href="javascript:;"><img src="public/images/svg/google.svg" alt=""></a>
-                                </li>
-                                <li><a href="javascript:;"><img src="public/images/svg/youtube.svg" alt=""></a>
+                                
+                                <li><a href="<?php echo e($youtube->value); ?>"><img src="public/images/svg/youtube.svg"
+                                            alt=""></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    
                     <div class="px_footer_widget">
                         <h3 class="px_footer_heading">Our Services</h3>
                         <ul>
-                            <li><a href="service_detail.html">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
-                                            width="8" height="12" viewBox="0 0 8 12">
-                                            <path
-                                                d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
-                                        </svg></span> Vastu Shastra</a></li>
-                            <li><a href="service_detail.html">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
-                                            width="8" height="12" viewBox="0 0 8 12">
-                                            <path
-                                                d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
-                                        </svg></span> Geopathic Stress</a></li>
-                            <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
-                                            width="8" height="12" viewBox="0 0 8 12">
-                                            <path
-                                                d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
-                                        </svg></span> Sign & Logo Correction</a></li>
-                            <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
-                                            width="8" height="12" viewBox="0 0 8 12">
-                                            <path
-                                                d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
-                                        </svg></span> Aroma Therapy/ Human aura</a></li>
-                            <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
-                                            width="8" height="12" viewBox="0 0 8 12">
-                                            <path
-                                                d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
-                                        </svg></span> Astrology Consultation</a></li>
+                            <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li>
+                                    <a href="<?php echo e(url('service_detail/' . $service->id)); ?>">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                preserveAspectRatio="xMidYMid" width="8" height="12"
+                                                viewBox="0 0 8 12">
+                                                <path
+                                                    d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
+                                            </svg>
+                                        </span>
+                                        <?php echo e($service->service_title); ?>
+
+                                    </a>
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
+
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="px_footer_widget">
                         <h3 class="px_footer_heading">Quick Links</h3>
 
                         <ul>
-                            <li><a href="about.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.aboutus')); ?>"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> About Us</a></li>
-                            <li><a href="blog.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="#"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> Videos</a></li>
-                            <li><a href="astrologer.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.services')); ?>"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> Services</a></li>
-                            <li><a href="appointment.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.appointment')); ?>"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> Appointment</a></li>
-                            <li><a href="remotebooking.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.remotebooking')); ?>"><span><svg
+                                            xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> Remote Booking</a></li>
-                            <li><a href="contact.html"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.contact')); ?>"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
@@ -123,8 +124,7 @@
                                         d="M7.000,-0.001 C3.141,-0.001 -0.000,3.049 -0.000,6.798 C-0.000,12.125 6.342,17.625 6.612,17.857 C6.723,17.952 6.861,18.000 7.000,18.000 C7.138,18.000 7.277,17.952 7.388,17.858 C7.658,17.625 14.000,12.125 14.000,6.798 C14.000,3.049 10.859,-0.001 7.000,-0.001 L7.000,-0.001 ZM7.000,10.499 C4.855,10.499 3.111,8.817 3.111,6.749 C3.111,4.681 4.855,2.999 7.000,2.999 C9.144,2.999 10.889,4.681 10.889,6.749 C10.889,8.817 9.144,10.499 7.000,10.499 L7.000,10.499 Z" />
                                 </svg>
 
-                                <p>H Block-107, Titanium City Center, Nr. Sachin Tower, Anandnagar Road, Satelite,
-                                    Ahmedabad, Gujarat, India</p>
+                                <p><?php echo e($siteAddress->value); ?></p>
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -134,7 +134,7 @@
                                 </svg>
 
                                 <p>
-                                    <a href="javascript:;">d_m_zaveri@yahoo.com</a>
+                                    <a href="mailto:<?php echo e($siteEmail->value); ?>"><?php echo e($siteEmail->value); ?></a>
                                     <!-- <a href="javascript:;">Support@example.com</a> -->
                                 </p>
                             </li>
@@ -146,7 +146,8 @@
                                 </svg>
 
                                 <p>
-                                    <a href="javascript:;">+ (91) 9825744633</a><br>
+                                    <a href="tel:+91<?php echo e(preg_replace('/\D/', '', $siteNumber->value)); ?>">+ (91)
+                                        <?php echo e($siteNumber->value); ?></a><br>
                                     <!-- <a href="javascript:;">+ (91) 1800-326-324</a> -->
                                 </p>
                             </li>
@@ -162,7 +163,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; 2025 Dhaval Zaveri. All Right Reserved.</p>
+                <p>Copyright &copy; 2025 <?php echo e($appName->value); ?>. All Right Reserved.</p>
             </div>
         </div>
     </div>

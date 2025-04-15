@@ -5,9 +5,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="px_heading px_heading_center text-center">Remote Vastu Consultation Booking</h2>
+                    <h2 class="px_heading px_heading_center text-center">Book Your Online Consultation</h2>
                     <p class="px_font14 px_padderBottom10 text-center">Please fill out all required details for your
-                        remote Vastu consultation. After submission, you'll be directed to the payment page to
+                        Online Consultation. After submission, you'll be directed to the payment page to
                         complete your booking.</p>
 
                     <div class="px_journal_box_wrapper">
@@ -70,7 +70,7 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <label for="google_location">Google Maps Location Link *</label>
-                                    <div class="form-group position-relative">
+                                    <div class="form-group position-relative ">
                                         <input class="form-control" type="url" id="google_location"
                                             name="google_location" placeholder="Paste Google Maps share link" required
                                             data-bs-toggle="tooltip" data-bs-placement="right"
@@ -83,8 +83,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="layout_map">Layout/Floor Plan (DWG/PDF/Image) *</label>
-                                    <div class="form-group position-relative">
-                                        <input class="form-control" type="file" id="layout_map" name="layout_map"
+                                    <div class="form-group position-relative ">
+                                        <input class="form-control " type="file" id="layout_map" name="layout_map"
                                             accept=".pdf,.jpg,.jpeg,.png" required data-bs-toggle="tooltip"
                                             data-bs-placement="right"
                                             title="Upload a clear image or PDF of your property layout.">
@@ -104,14 +104,14 @@
 
 
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                                            <label for="property_video">Property Video Walkthrough (Optional)</label>
-                                                                                                            <div class="form-group">
-                                                                                                                <input class="form-control" type="file" id="property_video"
-                                                                                                                    name="property_video" accept=".mp4,.mov">
-                                                                                                                <small class="form-text text-muted">Optional video showing all rooms and
-                                                                                                                    directions</small>
-                                                                                                            </div>
-                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                    <label for="property_video">Property Video Walkthrough (Optional)</label>
+                                                                                                                                                                                                                                                                    <div class="form-group">
+                                                                                                                                                                                                                                                                        <input class="form-control" type="file" id="property_video"
+                                                                                                                                                                                                                                                                            name="property_video" accept=".mp4,.mov">
+                                                                                                                                                                                                                                                                        <small class="form-text text-muted">Optional video showing all rooms and
+                                                                                                                                                                                                                                                                            directions</small>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                </div> -->
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <label for="property_video">Property Video Walkthrough (Optional)</label>
                                     <div class="form-group position-relative">

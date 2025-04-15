@@ -58,23 +58,40 @@
                                     class="w-20 h-12"></td>
                             <td><?php echo e($service->service_title); ?></td>
                             <td><?php echo e(Str::limit($service->service_details, 50)); ?></td>
-                            <td>
-                                <?php if($service->service_images): ?>
-                                    <?php $__currentLoopData = json_decode($service->service_images, true); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <img src="<?php echo e(asset('storage/app/public/' . $image)); ?>" class="w-10 h-10 mr-1"
-                                            alt="Img">
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            
+                            <td class="flex items-center">
+                                <?php
+                                    $images = $service->service_images
+                                        ? json_decode($service->service_images, true)
+                                        : [];
+                                    $totalImages = count($images);
+                                ?>
+
+                                <?php if($totalImages > 0): ?>
+                                    
+                                    <img src="<?php echo e(asset('storage/app/public/' . $images[0])); ?>"
+                                        class="w-16 h-16 mr-2 rounded" alt="Main Image">
+
+                                    
+                                    <?php if($totalImages > 1): ?>
+                                        <div class="text-sm bg-gray-200 px-2 py-1 rounded">
+                                            +<?php echo e($totalImages - 1); ?>
+
+                                        </div>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <span>No Images</span>
                                 <?php endif; ?>
                             </td>
+
+
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3 text-success"
                                         href="<?php echo e(route('serviceshow', $service->id)); ?>">
                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
                                     </a>
-                                    <a class="flex items-center mr-3" href="<?php echo e(route('serviceupdate', $service->id)); ?>">
+                                    <a class="flex items-center mr-3" href="<?php echo e(route('serviceedit', $service->id)); ?>">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit
                                     </a>
                                     <a href="javascript:;" class="flex items-center deletebtn text-danger"

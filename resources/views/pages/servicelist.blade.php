@@ -60,7 +60,7 @@
                                     class="w-20 h-12"></td>
                             <td>{{ $service->service_title }}</td>
                             <td>{{ Str::limit($service->service_details, 50) }}</td>
-                            <td>
+                            {{-- <td>
                                 @if ($service->service_images)
                                     @foreach (json_decode($service->service_images, true) as $image)
                                         <img src="{{ asset('storage/app/public/' . $image) }}" class="w-10 h-10 mr-1"
@@ -69,14 +69,39 @@
                                 @else
                                     <span>No Images</span>
                                 @endif
+                            </td> --}}
+                            <td class="flex items-center">
+                                @php
+                                    $images = $service->service_images
+                                        ? json_decode($service->service_images, true)
+                                        : [];
+                                    $totalImages = count($images);
+                                @endphp
+
+                                @if ($totalImages > 0)
+                                    {{-- First image --}}
+                                    <img src="{{ asset('storage/app/public/' . $images[0]) }}"
+                                        class="w-16 h-16 mr-2 rounded" alt="Main Image">
+
+                                    {{-- If there are more, show "+X" --}}
+                                    @if ($totalImages > 1)
+                                        <div class="text-sm bg-gray-200 px-2 py-1 rounded">
+                                            +{{ $totalImages - 1 }}
+                                        </div>
+                                    @endif
+                                @else
+                                    <span>No Images</span>
+                                @endif
                             </td>
+
+
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3 text-success"
                                         href="{{ route('serviceshow', $service->id) }}">
                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
                                     </a>
-                                    <a class="flex items-center mr-3" href="{{ route('serviceupdate', $service->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('serviceedit', $service->id) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit
                                     </a>
                                     <a href="javascript:;" class="flex items-center deletebtn text-danger"

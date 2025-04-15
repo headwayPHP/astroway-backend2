@@ -76,33 +76,22 @@
                         <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">Layout Map</h3>
                         <?php if($booking->layout_map): ?>
                             <?php
-                                $extension = pathinfo($booking->layout_map, PATHINFO_EXTENSION);
+                                $ext = pathinfo($booking->layout_map, PATHINFO_EXTENSION);
+                                $layoutPath = asset('storage/app/public/' . $booking->layout_map);
                             ?>
-                            <div class="mt-2">
-                                <?php if(in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])): ?>
-                                    <div class="relative group">
-                                        <img src="<?php echo e(asset('storage/app/public/' . $booking->layout_map)); ?>"
-                                            alt="Layout Map" class="rounded-md w-full max-w-md border border-gray-200">
-                                        <div
-                                            class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10
-                                                    transition-all duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                            <a href="<?php echo e(asset('storage/app/public/' . $booking->layout_map)); ?>" download
-                                                class="bg-white p-2 rounded-full shadow-lg">
-                                                <i data-lucide="download" class="w-5 h-5 text-blue-600"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php elseif($extension === 'pdf'): ?>
-                                    <div class="border border-gray-200 rounded-md p-2">
-                                        <embed src="<?php echo e(asset('storage/app/public/' . $booking->layout_map)); ?>"
-                                            type="application/pdf" width="100%" height="300px" />
-                                    </div>
-                                <?php endif; ?>
-                                <a href="<?php echo e(asset('storage/app/public/' . $booking->layout_map)); ?>" download
-                                    class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-3">
-                                    <i data-lucide="download" class="w-4 h-4 mr-1"></i> Download Layout Map
-                                </a>
-                            </div>
+
+                            <?php if(in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
+                                <img src="<?php echo e($layoutPath); ?>" alt="Layout Map"
+                                    class="cursor-pointer rounded-md w-40 h-40 object-cover border"
+                                    onclick="openModal('<?php echo e($layoutPath); ?>')">
+                            <?php elseif($ext === 'pdf'): ?>
+                                <embed src="<?php echo e($layoutPath); ?>" type="application/pdf" width="100%" height="300px" />
+                            <?php endif; ?>
+
+                            <a href="<?php echo e($layoutPath); ?>" download
+                                class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-3">
+                                <i data-lucide="download" class="w-4 h-4 mr-1"></i> Download Layout Map
+                            </a>
                         <?php else: ?>
                             <p class="text-gray-500 italic">No layout map provided</p>
                         <?php endif; ?>
@@ -112,19 +101,12 @@
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">Compass Reading</h3>
                         <?php if($booking->compass_reading): ?>
-                            <div class="relative group">
-                                <img src="<?php echo e(asset('storage/app/public/' . $booking->compass_reading)); ?>"
-                                    alt="Compass Reading" class="rounded-md w-full max-w-md border border-gray-200">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10
-                                            transition-all duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                    <a href="<?php echo e(asset('storage/app/public/' . $booking->compass_reading)); ?>" download
-                                        class="bg-white p-2 rounded-full shadow-lg">
-                                        <i data-lucide="download" class="w-5 h-5 text-blue-600"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <a href="<?php echo e(asset('storage/app/public/' . $booking->compass_reading)); ?>" download
+                            <?php $compassPath = asset('storage/app/public/' . $booking->compass_reading); ?>
+                            <img src="<?php echo e($compassPath); ?>" alt="Compass Reading"
+                                class="cursor-pointer rounded-md w-40 h-40 object-cover border"
+                                onclick="openModal('<?php echo e($compassPath); ?>')">
+
+                            <a href="<?php echo e($compassPath); ?>" download
                                 class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-3">
                                 <i data-lucide="download" class="w-4 h-4 mr-1"></i> Download Compass Reading
                             </a>
@@ -140,19 +122,15 @@
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">Property Video</h3>
                         <?php if($booking->property_video): ?>
-                            <div class="mt-2">
-                                <div class="relative w-full max-w-2xl mx-auto">
-                                    <video controls class="rounded-md w-full border border-gray-200">
-                                        <source src="<?php echo e(asset('storage/app/public/' . $booking->property_video)); ?>"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                                <a href="<?php echo e(asset('storage/app/public/' . $booking->property_video)); ?>" download
-                                    class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-3">
-                                    <i data-lucide="download" class="w-4 h-4 mr-1"></i> Download Property Video
-                                </a>
-                            </div>
+                            <video controls class="rounded-md w-full border border-gray-200 max-w-2xl mx-auto">
+                                <source src="<?php echo e(asset('storage/app/public/' . $booking->property_video)); ?>"
+                                    type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <a href="<?php echo e(asset('storage/app/public/' . $booking->property_video)); ?>" download
+                                class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-3">
+                                <i data-lucide="download" class="w-4 h-4 mr-1"></i> Download Property Video
+                            </a>
                         <?php else: ?>
                             <p class="text-gray-500 italic">No property video provided</p>
                         <?php endif; ?>
@@ -163,9 +141,7 @@
                     <!-- Additional Notes -->
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">Additional Notes</h3>
-                        <div class="prose max-w-none">
-                            <p class="text-gray-700"><?php echo e($booking->additional_notes ?: 'No additional notes provided'); ?></p>
-                        </div>
+                        <p class="text-gray-700"><?php echo e($booking->additional_notes ?: 'No additional notes provided'); ?></p>
                     </div>
                 </div>
 
@@ -186,6 +162,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Image Modal -->
+        <div id="imageModal" class="fixed inset-0 z-50 bg-black bg-opacity-75 hidden flex items-center justify-center">
+            <span class="absolute top-6 right-6 text-white text-3xl cursor-pointer" onclick="closeModal()">×</span>
+            <img id="modalImage" src="" class="max-h-[90vh] max-w-[90vw] rounded shadow-lg">
+        </div>
     <?php else: ?>
         <div class="intro-y flex flex-col items-center justify-center mt-10">
             <img src="<?php echo e(asset('build/assets/images/nodata.png')); ?>" class="h-64" alt="No Data">
@@ -202,6 +184,22 @@
     <script>
         $(window).on('load', function() {
             $('.loader').hide();
+        });
+
+        function openModal(imageSrc) {
+            $('#modalImage').attr('src', imageSrc);
+            $('#imageModal').removeClass('hidden');
+        }
+
+        function closeModal() {
+            $('#imageModal').addClass('hidden');
+            $('#modalImage').attr('src', '');
+        }
+
+        $(document).on('click', '#imageModal', function(e) {
+            if (e.target.id === 'imageModal') {
+                closeModal();
+            }
         });
     </script>
 <?php $__env->stopSection(); ?>

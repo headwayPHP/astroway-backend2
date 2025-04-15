@@ -467,6 +467,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('servicelist', [AppFeedbackController::class, 'serviceList'])->name('servicelist');
         Route::get('serviceshow/{id}', [AppFeedbackController::class, 'serviceShow'])->name('serviceshow');
         Route::post('serviceupdate/{id}', [AppFeedbackController::class, 'serviceUpdate'])->name('serviceupdate');
+        Route::get('serviceedit/{id}', [AppFeedbackController::class, 'serviceEdit'])->name('serviceedit');
         Route::get('serviceadd', [AppFeedbackController::class, 'serviceAdd'])->name('serviceadd');
         Route::post('serviceadd', [AppFeedbackController::class, 'serviceAddApi'])->name('serviceaddApi');
         Route::delete('servicedelete/{id}', [AppFeedbackController::class, 'serviceDelete'])->name('servicedelete');
@@ -553,7 +554,7 @@ Route::get('appointment', [FrontendPageManagementController::class, 'appointment
 Route::post('saveAppointment', [FrontendPageManagementController::class, 'saveAppointment'])->name('front.store.appointment');
 
 Route::get('/services', [FrontendPageManagementController::class, 'services'])->name('front.services');
-Route::get('/services/{id}', [FrontendPageManagementController::class, 'serviceShow'])->name('front.services.show');
+Route::get('/services-details', [FrontendPageManagementController::class, 'serviceShow'])->name('front.servicedetail');
 
 
 Route::get('/astrologer/{id?}/stories', [HomeController::class, 'getAstrologerStories'])->name('front.getAstrologerStories');

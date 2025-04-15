@@ -1,63 +1,40 @@
-@extends('v2.frontend.layout.master')
+    @extends('v2.frontend.layout.master')
 
-@section('content')
-    <section class="px_service_wrapper px_padderBottom80 px-dark-light-section-new px-bg-none px_padderTop80">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 class="px_heading px_heading_center ">our services</h1>
-                    <p class="px_font14 px_padderBottom5">Professional solutions combining ancient Vastu wisdom with
-                        modern scientific approaches for holistic well-being.</p>
-                </div>
+    @section('content')
+        <section class="px_service_wrapper px_padderBottom80 px-dark-light-section-new px-bg-none px_padderTop80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center mb-4">
+                        <h1 class="px_heading px_heading_center">our services</h1>
+                        <p class="px_font14 px_padderBottom5">
+                            Professional solutions combining ancient Vastu wisdom with
+                            modern scientific approaches for holistic well-being.
+                        </p>
+                    </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
-                        <img src="assets/images/VASTU.png" alt="Vastu Energy Icon" width="80" height="80">
-                        <h4 class="px_subheading">Vastu Shastra</h4>
-                        <p>Modern energy correction for spaces <br>without structural demolition.</p>
-                        <a href="service_detail.html" class="px_link">read more</a>
+                    <div class="d-flex flex-wrap justify-content-center gap-4 w-100">
+                        @foreach ($services as $service)
+                            <div style="width: 270px;" class="mb-4">
+                                <div
+                                    class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
+                                    <img src="{{ asset('storage/app/public/' . $service->service_icon) }}"
+                                        alt="{{ $service->service_title }} Icon" width="80" height="80">
+
+                                    <h4 class="px_subheading">{{ $service->service_title }}</h4>
+
+                                    <p>{{ \Illuminate\Support\Str::limit(strip_tags($service->service_details), 80) }}</p>
+
+                                    <a href="{{ route('front.servicedetail', ['id' => $service->id]) }}"
+                                        class="px_link">read more</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
-
-                        <img src="assets/images/CONSULT.png" alt="Astology Consultation Icon" width="80" height="80">
-                        <h4 class="px_subheading">Astology Consultation</h4>
-                        <p>Ocnsectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p>
-                        <a href="service_detail.html" class="px_link">read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
-
-                        <img src="assets/images/LOGOCORRECT.png" alt="Logo Correction Icon" width="80" height="80">
-                        <h4 class="px_subheading">Logo Correction</h4>
-                        <p>Sonsectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p>
-                        <a href="service_detail.html" class="px_link">read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
-
-                        <img src="assets/images/NAMECORRECT.png" alt="Name Correction Icon" width="80" height="80">
-                        <h4 class="px_subheading">Name Correction</h4>
-                        <p>Tonsectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p>
-                        <a href="service_detail.html" class="px_link">read more</a>
-                    </div>
-                </div>
-                <div class=" d-flex justify-content-center align-items-center text-center">
-                    <div class="px_service_box px_service_box01 px_service_box_new px-light-section-new">
-                        <img src="assets/images/SIGNCORRECT.png" alt="Sign Correction Icon" width="80" height="80">
-                        <h4 class="px_subheading">Sign Correction</h4>
-                        <p>Uonsectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p>
-                        <a href="service_detail.html" class="px_link">read more</a>
-                    </div>
-                </div>
-
 
             </div>
-        </div>
-    </section>
-    @include('v2.frontend.components.whychooseus')
-    @include('v2.frontend.components.testimonials')
-@endsection
+        </section>
+
+        @include('v2.frontend.components.whychooseus')
+        @include('v2.frontend.components.testimonials')
+    @endsection

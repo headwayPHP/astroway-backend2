@@ -129,14 +129,13 @@ class PageManagementController extends Controller
     #-------------------------------------------------------------------------------------------------------------------------
 
 
+
     public function remoteBooking(Request $request)
     {
         try {
+            $services = Service::all(); // fetch all services
 
-
-
-
-            return view('v2.frontend.pages.remotebooking');
+            return view('v2.frontend.pages.remotebooking', compact('services'));
         } catch (\Exception $e) {
             return response()->json([
                 'error' => true,
@@ -240,11 +239,35 @@ class PageManagementController extends Controller
 
 
 
+    // public function services(Request $request)
+    // {
+    //     try {
+    //         // Fetch all services
+    //         $services = Service::latest()->get();
+
+    //         return view('v2.frontend.pages.services', compact('services'));
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'error' => true,
+    //             'message' => $e->getMessage(),
+    //             'status' => 500,
+    //         ], 500);
+    //     }
+    // }
+
     public function services(Request $request)
     {
         try {
-            // Fetch all services
-            $services = Service::latest()->get();
+            // Check if service_no is passed
+            $limit = $request->get('service_no');
+
+            // Fetch all or limited services
+            $services = Service::latest();
+            if ($limit) {
+                $services = $services->take($limit);
+            }
+
+            $services = $services->get();
 
             return view('v2.frontend.pages.services', compact('services'));
         } catch (\Exception $e) {
@@ -256,13 +279,15 @@ class PageManagementController extends Controller
         }
     }
 
-    public function serviceShow($id)
+
+    public function serviceShow(Request $request)
     {
         try {
-            // Find the service or throw 404
+            $id = $request->query('id'); // or just $request->id
             $service = Service::findOrFail($id);
-
-            return view('frontend.services.show', compact('service'));
+            // dd($service);
+            // dd(asset('public/js/jquery.min.js'));
+            return view('v2.frontend.pages.servicedetail', compact('service'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Service not found.');
         }

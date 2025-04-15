@@ -1,0 +1,195 @@
+.dropdown {
+    position: relative;
+    display: none;
+    z-index: 100;
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.drop-button {
+    background-color: #0090d0;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 1px;
+    border: 1px solid black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 148px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    font-size: 12px;
+    border: 1px solid black;
+    border-radius: 1px;
+    border-top: none;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 8px;
+    text-decoration: none;
+    border-bottom: 1px solid #666;
+    display: block;
+}
+
+.dropdown-content a:last-child {
+    border: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #e0e0e0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.dropdown-text {
+    float: right;
+}
+
+a img {
+    width: 50px;
+    height: 50px;
+}
+
+.spinner {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+
+
+
+/*-------------------------
+    Viewer Styles -------------------------*/
+
+
+
+
+
+
+/* Viewer Container */
+.viewer-container-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #f8fafc;
+}
+
+.viewer-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+}
+
+.loading-indicator p {
+    margin-top: 1rem;
+    color: #334155;
+    font-weight: 500;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3b82f6;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Viewer Controls */
+.viewer-controls {
+    background-color: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.dropdown-toggle:hover {
+    background-color: #f1f5f9;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 0.375rem;
+    border: 1px solid #e2e8f0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #334155;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f5f9;
+}
+
+.hidden {
+    display: none;
+}

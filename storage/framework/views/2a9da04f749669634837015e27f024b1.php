@@ -26,6 +26,9 @@ Author: PixelNX
     <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
     <link rel="stylesheet" href="public/css/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <!-- Lightbox2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
     <link rel="stylesheet" id="theme-change" type="text/css" href="#">
     <!-- favicon -->
     <link rel="shortcut icon" href="public/images/logo.png" type="image/x-icon">
@@ -40,7 +43,10 @@ Author: PixelNX
     <div class="px_main_wrapper">
         <?php echo $__env->make('v2.frontend.layout.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->yieldContent('content'); ?>
-        <?php echo $__env->make('v2.frontend.layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php
+            $limitedServices = \App\Models\Service::latest()->take(6)->get();
+        ?>
+        <?php echo $__env->make('v2.frontend.layout.footer', ['services' => $limitedServices], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Modal -->
         <div id="px_login" class="modal fade" tabindex="-1" aria-labelledby="px_login" role="dialog">
             <div class="modal-dialog">
@@ -133,21 +139,27 @@ Author: PixelNX
         </div>
 
 
+        
+
         <!-- javascript -->
-        <script src="public/js/jquery.min.js"></script>
-        <script src="public/js/bootstrap.min.js"></script>
-        <script src="public/js/smooth-scroll.min.js"></script>
-        <script src="public/js/plugin/slick/slick.min.js"></script>
-        <script src="public/js/plugin/countto/jquery.countTo.js"></script>
-        <script src="public/js/plugin/airdatepicker/datepicker.min.js"></script>
-        <script src="public/js/plugin/airdatepicker/i18n/datepicker.en.js"></script>
+        <script src="<?php echo e(asset('public/js/jquery.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/bootstrap.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/smooth-scroll.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/plugin/slick/slick.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/plugin/countto/jquery.countTo.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/plugin/airdatepicker/datepicker.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('public/js/plugin/airdatepicker/i18n/datepicker.en.js')); ?>"></script>
+
         <!-- Include Toastr CSS -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
         
         <!-- Include jQuery (required) + Toastr JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-        <script src="public/js/custom.js"></script>
+        <script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
+        <!-- Lightbox2 JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
         <?php if(session('success')): ?>
             <script>
                 $(document).ready(function() {

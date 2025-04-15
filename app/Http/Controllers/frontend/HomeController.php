@@ -46,6 +46,9 @@ class HomeController extends Controller
         $shop = $getsystemflag->where('name', 'Astromall')->first();
         $daily_horoscope = $getsystemflag->where('name', 'DailyHoroscope')->first();
 
+        $limitedServices = \App\Models\Service::latest()->take(8)->get();
+
+
 
         // Stories
 
@@ -99,6 +102,7 @@ class HomeController extends Controller
 
         return view('v2.frontend.pages.index', [
             'token' => $token,
+
             'home_data' => $home_data,
             'liveastro' => $liveastro,
             'getAstrologer' => $getAstrologer,
@@ -106,6 +110,7 @@ class HomeController extends Controller
             'random_banner' => $random_banner,
             'currency' => $currency,
             'freekundali' => $freekundali,
+
             'kundali_matching' => $kundali_matching,
             'blog' => $blog,
             'shop' => $shop,
@@ -113,6 +118,7 @@ class HomeController extends Controller
             'daily_horoscope' => $daily_horoscope,
             'stories' => $stories,
             'getstoriesbyid' => $getstoriesbyid,
+            'limitedServices' => $limitedServices,
 
         ]);
     }
