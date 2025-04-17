@@ -18,7 +18,7 @@
                     <?php $__currentLoopData = $result; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dash): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="grid grid-cols-12 gap-6 mt-5">
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('callHistory')); ?>">
+                                <a href="<?php echo e(route('appointmentlist')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -26,16 +26,17 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalCallRequest']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                <?php echo e($dash['totalAppointCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Call Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Appointments</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('chatHistory')); ?>">
+                                <a href="<?php echo e(route('remotebookinglist')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
 
@@ -46,10 +47,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalChatRequest']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                <?php echo e($dash['remoteBookingCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Chat Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Remote Bookings</div>
                                         </div>
                                     </div>
                                 </a>
@@ -57,7 +59,7 @@
 
 
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('reportrequest')); ?>">
+                                <a href="<?php echo e(route('servicelist')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -65,31 +67,31 @@
 
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">
-                                                <?php echo e($dash['totalReportRequest']); ?>
+                                                <?php echo e($dash['serviceCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Report Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Services</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('partnerWiseEarning')); ?>">
+                                <a href="<?php echo e(route('contactlist')); ?>">
                                     <div class="report-box">
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="indian-rupee" class="report-box__icon text-success"></i>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalEarning']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['contactUsCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Earning</div>
+                                            <div class="text-base text-slate-500 mt-1">Contact Requests</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('customers')); ?>">
+                                <a href="<?php echo e(route('adsVideos')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -97,16 +99,16 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalCustomer']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['videoCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Customer</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Videos</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('astrologers')); ?>">
+                                <a href="<?php echo e(route('clientlist')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -114,17 +116,17 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalAstrologer']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['clientCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Astrologer</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Clients</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('orders')); ?>">
+                                <a href="<?php echo e(route('testimoniallist')); ?>">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -132,34 +134,130 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalOrders']); ?>
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                <?php echo e($dash['testimonialCount']); ?>
 
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Orders</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Testimonials</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
 
-                            <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('story-list')); ?>">
-                                    <div class="report-box zoom-in">
-                                        <div class="box p-5">
-                                            <div class="flex">
-                                                <i data-lucide="play-circle" class="report-box__icon text-warning"></i>
-                                                <div class="ml-auto">
-                                                </div>
-                                            </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6"><?php echo e($dash['totalStories']); ?>
-
-                                            </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Story Posted</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
                         </div>
                 </div>
+                <!-- BEGIN: Latest Appointments & Remote Bookings -->
+                <div class="col-span-12 mt-8">
+                    <div class="grid grid-cols-12 gap-6">
+                        <!-- Latest Appointments -->
+                        <div class="col-span-12 lg:col-span-6">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Appointments</h2>
+                                <a href="<?php echo e(route('appointmentlist')); ?>" class="ml-auto text-primary truncate">View All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Contact</th>
+                                                <th class="whitespace-nowrap">Date/Time</th>
+                                                <th class="whitespace-nowrap">Reason</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $latestAppointments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $appointment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap"><?php echo e($appointment->name); ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($appointment->mobile): ?>
+                                                            <?php echo e($appointment->mobile); ?><br>
+                                                        <?php endif; ?>
+                                                        <?php if($appointment->email): ?>
+                                                            <?php echo e($appointment->email); ?>
+
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($appointment->preferred_date): ?>
+                                                            <?php echo e(date('d M Y', strtotime($appointment->preferred_date))); ?>
+
+                                                            <?php if($appointment->preferred_time): ?>
+                                                                <br><?php echo e(date('h:i A', strtotime($appointment->preferred_time))); ?>
+
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                            Not specified
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 150px;"
+                                                        title="<?php echo e($appointment->reason); ?>">
+                                                        <?php echo e(Str::limit($appointment->reason, 30)); ?>
+
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Latest Remote Bookings -->
+                        <div class="col-span-12 lg:col-span-6">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Remote Bookings</h2>
+                                <a href="<?php echo e(route('remotebookinglist')); ?>" class="ml-auto text-primary truncate">View
+                                    All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Birth Details</th>
+                                                <th class="whitespace-nowrap">Location</th>
+                                                <th class="whitespace-nowrap">Notes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $latestRemoteBookings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $booking): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap"><?php echo e($booking->fullname); ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo e(date('d M Y', strtotime($booking->birthdate))); ?><br>
+                                                        <?php echo e(date('h:i A', strtotime($booking->birthtime))); ?>
+
+                                                    </td>
+                                                    <td>
+                                                        <?php echo e($booking->city); ?><br>
+                                                        <?php echo e(Str::limit($booking->address, 20)); ?>
+
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 150px;"
+                                                        title="<?php echo e($booking->additional_notes); ?>">
+                                                        <?php echo e(Str::limit($booking->additional_notes, 30)); ?>
+
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Latest Appointments & Remote Bookings -->
                 <div class="col-span-12 lg:col-span-6 mt-8">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Monthly Earning Report</h2>

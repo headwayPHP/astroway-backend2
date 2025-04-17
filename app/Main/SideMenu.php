@@ -85,7 +85,8 @@ class SideMenu
                         'params' => "",
                         'title' => 'Horoscope Feedback',
                     ],
-                ]],
+                ]
+            ],
             'blog-list' => [
                 'icon' => 'edit',
                 'route_name' => 'blogs',

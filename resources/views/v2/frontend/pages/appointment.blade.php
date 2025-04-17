@@ -14,9 +14,9 @@
                         in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
                         predefined chunks as necessary, making this the first true generator on the Internet.</p>
                     <!-- <p class="px_font14 px_padderBottom20 text-center">It uses a dictionary of over 200 Latin words,
-                                                                                                                                                                                                                                            combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
-                                                                                                                                                                                                                                            reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected
-                                                                                                                                                                                                                                            humour, or non-characteristic words etc.</p> -->
+                                                                                                                                                                                                                                                                                    combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
+                                                                                                                                                                                                                                                                                    reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected
+                                                                                                                                                                                                                                                                                    humour, or non-characteristic words etc.</p> -->
 
 
 
@@ -163,5 +163,5 @@
     </section>
 
     @include('v2.frontend.components.whychooseus')
-    @include('v2.frontend.components.testimonials')
+    @include('v2.frontend.components.testimonials', ['testimonials' => $testimonials])
 @endsection

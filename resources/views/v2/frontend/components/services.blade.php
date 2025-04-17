@@ -1,6 +1,6 @@
 <section class="px_service_wrapper px_padderBottom80 px-dark-light-section-new px-bg-none px_padderTop80">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <h1 class="px_heading px_heading_center">our services</h1>
                 <p class="px_font14 px_padderBottom5">

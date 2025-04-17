@@ -47,7 +47,8 @@ class HomeController extends Controller
         $daily_horoscope = $getsystemflag->where('name', 'DailyHoroscope')->first();
 
         $limitedServices = \App\Models\Service::latest()->take(8)->get();
-
+        $clients = \Illuminate\Support\Facades\DB::table('clients')->where('status', 'active')->get();
+        $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
 
 
         // Stories
@@ -109,8 +110,9 @@ class HomeController extends Controller
             'getAstromallProduct' => $getAstromallProduct,
             'random_banner' => $random_banner,
             'currency' => $currency,
+            'testimonials' => $testimonials,
             'freekundali' => $freekundali,
-
+            'clients' => $clients,
             'kundali_matching' => $kundali_matching,
             'blog' => $blog,
             'shop' => $shop,

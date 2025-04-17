@@ -34,11 +34,14 @@
                             <td>{{ $rbook->city ?? '--' }}</td>
                             <td>{{ $rbook->created_at ? $rbook->created_at->format('d M, Y h:i A') : '--' }}</td>
                             <td class="text-center">
-                                <a class="flex items-center text-success"
-                                    href="{{ route('remotebookingshow', $rbook->id) }}">
-                                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
-                                </a>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <a href="{{ route('remotebookingshow', $rbook->id) }}"
+                                        class="flex items-center text-success hover:underline">
+                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
+                                    </a>
+                                </div>
                             </td>
+
                         </tr>
                     @endforeach
                 </tbody>

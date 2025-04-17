@@ -36,5 +36,5 @@
         </section>
 
         @include('v2.frontend.components.whychooseus')
-        @include('v2.frontend.components.testimonials')
+        @include('v2.frontend.components.testimonials', ['testimonials' => $testimonials])
     @endsection

@@ -201,11 +201,11 @@ Route::post('getAstromallProductById', [AstromallProductController::class, 'getA
 Route::post('searchAstromallProductCategory', [AstromallProductController::class, 'searchInProductCategory']);
 //Ads banner
 
-Route::post('/clients', [ClientController::class, 'store']);
-Route::post('/clients/{id}', [ClientController::class, 'update']);
-Route::post('/clients/delete/{id}', [ClientController::class, 'destroy']);
-Route::post('/clients/show/{id}', [ClientController::class, 'show']);
-Route::post('/clients/all', [ClientController::class, 'index'])->name('clientlist');
+// Route::post('/clients', [ClientController::class, 'store']);
+// Route::post('/clients/{id}', [ClientController::class, 'update']);
+// Route::post('/clients/delete/{id}', [ClientController::class, 'destroy']);
+// Route::post('/clients/show/{id}', [ClientController::class, 'show']);
+// Route::post('/clients/all', [ClientController::class, 'index'])->name('clientlist');
 
 
 //Ads video

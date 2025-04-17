@@ -54,7 +54,8 @@ class PageManagementController extends Controller
         try {
 
             $aboutus = DB::table('pages')->where('type', 'aboutus')->first();
-            return view('v2.frontend.pages.aboutus', compact('aboutus'));
+            $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
+            return view('v2.frontend.pages.aboutus', compact('aboutus', 'testimonials'));
         } catch (\Exception $e) {
             return response()->json([
                 'error' => false,
@@ -188,7 +189,11 @@ class PageManagementController extends Controller
 
     public function appointment()
     {
-        return view('v2.frontend.pages.appointment');
+        $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
+
+        return view('v2.frontend.pages.appointment', [
+            'testimonials' => $testimonials,
+        ]);
     }
 
 
@@ -268,8 +273,9 @@ class PageManagementController extends Controller
             }
 
             $services = $services->get();
+            $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
 
-            return view('v2.frontend.pages.services', compact('services'));
+            return view('v2.frontend.pages.services', compact('services', 'testimonials'));
         } catch (\Exception $e) {
             return response()->json([
                 'error' => true,

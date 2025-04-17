@@ -52,11 +52,15 @@
                                 <?php echo e($alist->created_at ? $alist->created_at->format('d M, Y h:i A') : '--'); ?>
 
                             </td>
-                            <td>
-                                <a class="flex items-center text-success" href="<?php echo e(route('appointmentshow', $alist->id)); ?>">
-                                    <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
-                                </a>
+                            <td class="text-center">
+                                <div class="flex justify-center items-center space-x-2">
+                                    <a href="<?php echo e(route('appointmentshow', $alist->id)); ?>"
+                                        class="flex items-center text-success hover:underline">
+                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>View
+                                    </a>
+                                </div>
                             </td>
+
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

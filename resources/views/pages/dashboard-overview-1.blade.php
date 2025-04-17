@@ -20,7 +20,7 @@
                     @foreach ($result as $dash)
                         <div class="grid grid-cols-12 gap-6 mt-5">
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('callHistory') }}">
+                                <a href="{{ route('appointmentlist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -28,15 +28,16 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalCallRequest'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                {{ $dash['totalAppointCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Call Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Appointments</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('chatHistory') }}">
+                                <a href="{{ route('remotebookinglist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
 
@@ -47,9 +48,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalChatRequest'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                {{ $dash['remoteBookingCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Chat Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Remote Bookings</div>
                                         </div>
                                     </div>
                                 </a>
@@ -57,7 +59,7 @@
 
 
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('reportrequest') }}">
+                                <a href="{{ route('servicelist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -65,29 +67,29 @@
 
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">
-                                                {{ $dash['totalReportRequest'] }}
+                                                {{ $dash['serviceCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Report Request</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Services</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('partnerWiseEarning') }}">
+                                <a href="{{ route('contactlist') }}">
                                     <div class="report-box">
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="indian-rupee" class="report-box__icon text-success"></i>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalEarning'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['contactUsCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Earning</div>
+                                            <div class="text-base text-slate-500 mt-1">Contact Requests</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('customers') }}">
+                                <a href="{{ route('adsVideos') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -95,15 +97,15 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalCustomer'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['videoCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Customer</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Videos</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('astrologers') }}">
+                                <a href="{{ route('clientlist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -111,16 +113,16 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalAstrologer'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['clientCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Astrologer</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Clients</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="{{ route('orders') }}">
+                                <a href="{{ route('testimoniallist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
@@ -128,15 +130,16 @@
                                                 <div class="ml-auto">
                                                 </div>
                                             </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">{{ $dash['totalOrders'] }}
+                                            <div class="text-3xl font-medium leading-8 mt-6">
+                                                {{ $dash['testimonialCount'] }}
                                             </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Orders</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Testimonials</div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
 
-                            <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+                            {{-- <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
                                 <a href="{{ route('story-list') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
@@ -151,9 +154,113 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                 </div>
+                <!-- BEGIN: Latest Appointments & Remote Bookings -->
+                <div class="col-span-12 mt-8">
+                    <div class="grid grid-cols-12 gap-6">
+                        <!-- Latest Appointments -->
+                        <div class="col-span-12 lg:col-span-6">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Appointments</h2>
+                                <a href="{{ route('appointmentlist') }}" class="ml-auto text-primary truncate">View All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Contact</th>
+                                                <th class="whitespace-nowrap">Date/Time</th>
+                                                <th class="whitespace-nowrap">Reason</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($latestAppointments as $appointment)
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap">{{ $appointment->name }}</span>
+                                                    </td>
+                                                    <td>
+                                                        @if ($appointment->mobile)
+                                                            {{ $appointment->mobile }}<br>
+                                                        @endif
+                                                        @if ($appointment->email)
+                                                            {{ $appointment->email }}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($appointment->preferred_date)
+                                                            {{ date('d M Y', strtotime($appointment->preferred_date)) }}
+                                                            @if ($appointment->preferred_time)
+                                                                <br>{{ date('h:i A', strtotime($appointment->preferred_time)) }}
+                                                            @endif
+                                                        @else
+                                                            Not specified
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 150px;"
+                                                        title="{{ $appointment->reason }}">
+                                                        {{ Str::limit($appointment->reason, 30) }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Latest Remote Bookings -->
+                        <div class="col-span-12 lg:col-span-6">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Remote Bookings</h2>
+                                <a href="{{ route('remotebookinglist') }}" class="ml-auto text-primary truncate">View
+                                    All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Birth Details</th>
+                                                <th class="whitespace-nowrap">Location</th>
+                                                <th class="whitespace-nowrap">Notes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($latestRemoteBookings as $booking)
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap">{{ $booking->fullname }}</span>
+                                                    </td>
+                                                    <td>
+                                                        {{ date('d M Y', strtotime($booking->birthdate)) }}<br>
+                                                        {{ date('h:i A', strtotime($booking->birthtime)) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $booking->city }}<br>
+                                                        {{ Str::limit($booking->address, 20) }}
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 150px;"
+                                                        title="{{ $booking->additional_notes }}">
+                                                        {{ Str::limit($booking->additional_notes, 30) }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Latest Appointments & Remote Bookings -->
                 <div class="col-span-12 lg:col-span-6 mt-8">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">Monthly Earning Report</h2>

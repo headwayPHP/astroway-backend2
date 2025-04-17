@@ -21,7 +21,8 @@ class AdminPages extends Authenticatable
         'pageGroup',
         'icon',
         'route',
-        'displayOrder'
+        'displayOrder',
+        'status'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -37,7 +38,7 @@ class AdminPages extends Authenticatable
      */
     protected $casts = [
     ];
-    
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

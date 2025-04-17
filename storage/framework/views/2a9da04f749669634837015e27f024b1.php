@@ -25,6 +25,8 @@ Author: PixelNX
     <link rel="stylesheet" type="text/css" media="screen" href="public/js/plugin/airdatepicker/datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
     <link rel="stylesheet" href="public/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <!-- Lightbox2 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">

@@ -471,6 +471,20 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('serviceadd', [AppFeedbackController::class, 'serviceAdd'])->name('serviceadd');
         Route::post('serviceadd', [AppFeedbackController::class, 'serviceAddApi'])->name('serviceaddApi');
         Route::delete('servicedelete/{id}', [AppFeedbackController::class, 'serviceDelete'])->name('servicedelete');
+        Route::get('clientlist', [AppFeedbackController::class, 'clientList'])->name('clientlist');
+        Route::get('clientshow/{id}', [AppFeedbackController::class, 'clientShow'])->name('clientshow');
+        Route::post('clientupdate/{id}', [AppFeedbackController::class, 'clientUpdate'])->name('clientupdate');
+        Route::get('clientedit/{id}', [AppFeedbackController::class, 'clientEdit'])->name('clientedit');
+        Route::get('clientadd', [AppFeedbackController::class, 'clientAdd'])->name('clientadd');
+        Route::post('clientadd', [AppFeedbackController::class, 'clientAddApi'])->name('clientaddApi');
+        Route::delete('clientdelete/{id}', [AppFeedbackController::class, 'clientDelete'])->name('clientdelete');
+        Route::get('testimoniallist', [AppFeedbackController::class, 'testimonialList'])->name('testimoniallist');
+        Route::get('testimonialshow/{id}', [AppFeedbackController::class, 'testimonialShow'])->name('testimonialshow');
+        Route::post('testimonialupdate/{id}', [AppFeedbackController::class, 'testimonialUpdate'])->name('testimonialupdate');
+        Route::get('testimonialedit/{id}', [AppFeedbackController::class, 'testimonialEdit'])->name('testimonialedit');
+        Route::get('testimonialadd', [AppFeedbackController::class, 'testimonialAdd'])->name('testimonialadd');
+        Route::post('testimonialadd', [AppFeedbackController::class, 'testimonialAddApi'])->name('testimonialaddApi');
+        Route::delete('testimonialdelete/{id}', [AppFeedbackController::class, 'testimonialDelete'])->name('testimonialdelete');
 
         Route::get('remotebookinglist', [AppFeedbackController::class, 'remotebookingList'])->name('remotebookinglist');
         Route::get('/remotebookinglist/{id}', [AppFeedbackController::class, 'remotebookingShow'])->name('remotebookingshow');

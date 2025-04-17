@@ -36,7 +36,7 @@
         </section>
 
         <?php echo $__env->make('v2.frontend.components.whychooseus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <?php echo $__env->make('v2.frontend.components.testimonials', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('v2.frontend.components.testimonials', ['testimonials' => $testimonials], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('v2.frontend.layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\astroway-backend2\resources\views/v2/frontend/pages/services.blade.php ENDPATH**/ ?>

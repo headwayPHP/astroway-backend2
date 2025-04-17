@@ -17,25 +17,25 @@ class DashboardController extends Controller
 {
     public $path;
 
-	public function termscond(Request $request)
-	{
-		try {
+    public function termscond(Request $request)
+    {
+        try {
 
             return response()->json([
                 'response' => url('terms-condition'),
                 'status' => 200,
             ], 200);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'error' => false,
                 'message' => $e->getMessage(),
                 'status' => 500,
             ], 500);
         }
-	}
+    }
 
-	public function privacyPolicy(Request $request)
-	{
+    public function privacyPolicy(Request $request)
+    {
 
         try {
 
@@ -43,20 +43,28 @@ class DashboardController extends Controller
                 'response' => url('privacyPolicy'),
                 'status' => 200,
             ], 200);
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'error' => false,
                 'message' => $e->getMessage(),
                 'status' => 500,
             ], 500);
         }
-	}
+    }
 
     public function getDashboard(Request $request)
     {
         // dd($request);
         try {
             if (Auth::guard('web')->check()) {
+
+                $totalAppointCount = DB::table('appointments')->count();
+                $remoteBookingCount = DB::table('remote_bookings')->count();
+                $serviceCount = DB::table('services')->count();
+                $contactUsCount = DB::table('contact_us')->count();
+                $clientCount = DB::table('clients')->count();
+                $testimonialCount = DB::table('testimonials')->count();
+                $videoCount = DB::table('astrology_videos')->count();
                 $totalCallRequest = DB::table('callrequest')
                     ->count();
                 $totalChatRequest = DB::table('chatrequest')
@@ -73,11 +81,22 @@ class DashboardController extends Controller
                     ->count();
 
                 $totalOrders = DB::table('order_request')
-                    ->where('orderType','=','astromall')
+                    ->where('orderType', '=', 'astromall')
                     ->count();
 
                 $totalStories = DB::table('astrologer_stories')
-                ->count();
+                    ->count();
+
+                $latestAppointments = DB::table('appointments')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+
+                $latestRemoteBookings = DB::table('remote_bookings')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+
 
 
                 $totalEarning = DB::table('admin_get_commissions')
@@ -206,16 +225,25 @@ class DashboardController extends Controller
                     "totalChatRequest" => $totalChatRequest,
                     "totalReportRequest" => $totalReportRequest,
                     "topAstrologer" => $topAstrologers,
+                    "remoteBookingCount" => $remoteBookingCount,
+                    "contactUsCount" => $contactUsCount,
+                    "videoCount" => $videoCount,
+                    "latestAppointments" => $latestAppointments,
+                    "latestRemoteBookings" => $latestRemoteBookings,
+                    "testimonialCount" => $testimonialCount,
+                    "clientCount" => $clientCount,
+                    "serviceCount" => $serviceCount,
                     "totalEarning" => $totalEarning,
                     "totalCustomer" => $totalCustomer,
                     "totalAstrologer" => $totalAstrologer,
                     "monthlyCommission" => $ti,
+                    "totalAppointCount" => $totalAppointCount,
                     "monthlyCallRequest" => $call,
                     "monthlyChatRequest" => $chat,
                     "monthlyReportRequest" => $report,
                     "unverifiedAstrologer" => $unverifiedAstrologer,
-                    "totalOrders" =>$totalOrders,
-                    "totalStories" =>$totalStories
+                    "totalOrders" => $totalOrders,
+                    "totalStories" => $totalStories
                 ]);
                 $labels = [];
                 $data = [];
@@ -239,7 +267,7 @@ class DashboardController extends Controller
                     array_push($reportData, $report['totalReport']);
                 }
                 $result = $dashboardData;
-                return view('pages.dashboard-overview-1', compact('result', 'labels', 'data', 'callData', 'chatData', 'reportData'));
+                return view('pages.dashboard-overview-1', compact('result', 'labels', 'data', 'callData', 'chatData', 'reportData', 'latestAppointments', 'latestRemoteBookings'));
             } else {
                 return redirect('admin/login');
             }
