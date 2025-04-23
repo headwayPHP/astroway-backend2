@@ -17,7 +17,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                <form action="{{ route('servicelist') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('servicelist') }}" method="GET" enctype="multipart/form-data">
                     @csrf
                     <div class="w-56 relative text-slate-500" style="display:inline-block">
                         <input value="{{ $searchString }}" type="text" class="form-control w-56 box pr-10"
@@ -90,7 +90,7 @@
                                         </div>
                                     @endif
                                 @else
-                                    <span>No Images</span>
+                                    <span style="padding-bottom:2.7em; text-align: center;"> - </span>
                                 @endif
                             </td>
 

@@ -4,81 +4,81 @@
 
 <?php $__env->startSection('subcontent'); ?>
     <div class="loader"></div>
-    <h2 class="intro-y text-lg font-medium mt-10">Appointment Details</h2>
+
+    <div class="mt-10">
+        <h2 class="text-2xl font-semibold text-gray-800">Appointment Details</h2>
+    </div>
 
     <?php if($appointment): ?>
-        <div class="intro-y box p-5 mt-5">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white shadow-md rounded-xl p-6 mt-6 space-y-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <strong>Name:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e($appointment->name ?? 'N/A'); ?></div>
-                </div>
-
-                <div>
-                    <strong>Email:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e($appointment->email ?? 'N/A'); ?></div>
+                    <p class="text-sm text-gray-500">Name</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e($appointment->name ?? '--'); ?></p>
                 </div>
 
                 <div>
-                    <strong>Mobile:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e($appointment->mobile ?? 'N/A'); ?></div>
+                    <p class="text-sm text-gray-500">Email</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e($appointment->email ?? '--'); ?></p>
                 </div>
 
                 <div>
-                    <strong>Gender:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e(ucfirst($appointment->gender ?? 'N/A')); ?></div>
+                    <p class="text-sm text-gray-500">Mobile</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e($appointment->mobile ?? '--'); ?></p>
                 </div>
 
                 <div>
-                    <strong>Time of Day:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e(ucfirst($appointment->time_of_day ?? 'N/A')); ?></div>
+                    <p class="text-sm text-gray-500">Gender</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e(ucfirst($appointment->gender ?? '--')); ?></p>
+                </div>
+            </div>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-sm text-gray-500">Time of Day</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e(ucfirst($appointment->time_of_day ?? '--')); ?></p>
                 </div>
 
                 <div>
-                    <strong>Way to Reach:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e(ucfirst($appointment->way_to_reach ?? 'N/A')); ?></div>
+                    <p class="text-sm text-gray-500">Way to Reach</p>
+                    <p class="text-base font-medium text-gray-800"><?php echo e(ucfirst($appointment->way_to_reach ?? '--')); ?></p>
                 </div>
 
                 <div>
-                    <strong>Preferred Date:</strong>
-                    <div class="text-gray-700 mt-1">
-                        <?php echo e(\Carbon\Carbon::parse($appointment->preferred_date)->format('j F Y')); ?>
+                    <p class="text-sm text-gray-500">Preferred Date</p>
+                    <p class="text-base font-medium text-gray-800">
+                        <?php echo e($appointment->preferred_date ? \Carbon\Carbon::parse($appointment->preferred_date)->format('j F Y') : '--'); ?>
 
-                    </div>
+                    </p>
                 </div>
 
                 <div>
-                    <strong>Preferred Time:</strong>
-                    <div class="text-gray-700 mt-1">
-                        <?php echo e(\Carbon\Carbon::parse($appointment->preferred_time)->format('h:i A')); ?>
+                    <p class="text-sm text-gray-500">Preferred Time</p>
+                    <p class="text-base font-medium text-gray-800">
+                        <?php echo e($appointment->preferred_time ? \Carbon\Carbon::parse($appointment->preferred_time)->format('h:i A') : '--'); ?>
 
-                    </div>
+                    </p>
                 </div>
+            </div>
 
-                <div class="md:col-span-2">
-                    <strong>Address:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e($appointment->address ?? '--'); ?></div>
-                </div>
+            
+            <div>
+                <p class="text-sm text-gray-500">Address</p>
+                <p class="text-base font-medium text-gray-800"><?php echo e($appointment->address ?? '--'); ?></p>
+            </div>
 
-                <div class="md:col-span-2">
-                    <strong>Reason:</strong>
-                    <div class="text-gray-700 mt-1"><?php echo e($appointment->reason ?? '--'); ?></div>
-                </div>
-
-                <div class="md:col-span-2">
-                    <strong>Created At:</strong>
-                    <div class="text-gray-700 mt-1">
-                        <?php echo e(\Carbon\Carbon::parse($appointment->created_at)->format('j F Y h:i A')); ?>
-
-                    </div>
-                </div>
+            <div>
+                <p class="text-sm text-gray-500">Reason</p>
+                <p class="text-base font-medium text-gray-800"><?php echo e($appointment->reason ?? '--'); ?></p>
             </div>
         </div>
     <?php else: ?>
-        <div class="intro-y flex justify-center items-center mt-10">
+        <div class="flex justify-center items-center mt-10">
             <div class="text-center">
-                <img src="<?php echo e(asset('build/assets/images/nodata.png')); ?>" style="height:290px" alt="No Data">
-                <h3 class="text-center mt-4">No Appointment Data Available</h3>
+                <img src="<?php echo e(asset('build/assets/images/nodata.png')); ?>" class="mx-auto h-72" alt="No Data">
+                <h3 class="mt-4 text-lg text-gray-600 font-semibold">No Appointment Data Available</h3>
             </div>
         </div>
     <?php endif; ?>

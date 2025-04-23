@@ -55,7 +55,7 @@
                                             class="form-control" value="<?php echo e($systemFlag->value); ?>">
                                     </div>
                                 <?php endif; ?>
-                                <?php if($systemFlag->valueType == 'Number'): ?>
+                                <?php if($systemFlag->valueType == 'Number' && $systemFlag->flagGroupId != 11): ?>
                                     <div>
                                         <label for="validation-form-2"
                                             class="form-label w-full flex flex-col sm:flex-row mt-2">
@@ -111,7 +111,7 @@
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
-                                <?php if($systemFlag->valueType == 'File'): ?>
+                                <?php if($systemFlag->valueType == 'File' && $systemFlag->isActive == 1): ?>
                                     <div class="intro-y col-span-12 sm:col-span-6 2xl:col-span-4 xl:col-span-4  d-inline">
                                         <div class="box p-5  mt-2 text-center">
                                             <label for="validation-form-2" class="form-label w-full  mt-2">
@@ -284,7 +284,7 @@
                                             <?php endif; ?>
                                         <?php endif; ?>
 
-                                        <?php if($systemFlag->valueType == 'Number'): ?>
+                                        <?php if($systemFlag->valueType == 'Number' && $systemFlag->flagGroupId != 11): ?>
                                             <div>
                                                 <label for="validation-form-2"
                                                     class="form-label w-full flex flex-col sm:flex-row mt-2">

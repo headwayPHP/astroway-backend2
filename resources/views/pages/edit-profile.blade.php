@@ -12,7 +12,8 @@
                     class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                     <h2 class="font-medium text-base mr-auto">Edit Profile</h2>
                 </div>
-                <form method="POST" enctype="multipart/form-data" id="edit-profile">
+                <form method="POST" enctype="multipart/form-data" id="edit-profile" action="{{ route('editProfileApi') }}">
+                    {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
                     @csrf
                     <div id="input" class="p-5">
                         <div class="preview">
@@ -89,7 +90,7 @@
                             "closeButton": true,
                             "progressBar": true
                         }
-                        location.href = "/admin/dashboard"
+                        location.href = "{{ route('dashboard') }}"
                     } else {
                         printErrorMsg(data.error);
                     }

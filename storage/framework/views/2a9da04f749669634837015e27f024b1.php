@@ -20,11 +20,23 @@ Author: PixelNX
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="public/js/plugin/slick/slick.css">
     <link rel="stylesheet" type="text/css" media="screen" href="public/js/plugin/airdatepicker/datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
     <link rel="stylesheet" href="public/css/swiper-bundle.min.css">
+    <style>
+        .goog-te-banner-frame,
+        iframe.VIpgJd-ZVi9od-ORHb-OEVmcd {
+            display: none !important;
+            height: 0 !important;
+            width: 0 !important;
+            border: none !important;
+            visibility: hidden !important;
+        }
+    </style>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
@@ -169,6 +181,50 @@ Author: PixelNX
                 });
             </script>
         <?php endif; ?>
+        <?php
+            use Illuminate\Support\Facades\DB;
+            $webLanguage = DB::table('systemflag')->where('name', 'WebLanguage')->first();
+            $selectedLanguages = json_decode($webLanguage->value, true) ?: [];
+            $includedLanguages = implode(',', $selectedLanguages);
+        ?>
+        <script>
+            (function() {
+                // Check if the script is already loaded
+                if (typeof google === 'undefined' || !google.translate || !google.translate.TranslateElement) {
+                    var gtScript = document.createElement('script');
+                    gtScript.type = 'text/javascript';
+                    gtScript.async = true;
+                    gtScript.defer = true;
+                    gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateInit';
+                    document.head.appendChild(gtScript);
+                } else {
+                    console.log('Google Translate script is already loaded.');
+                }
+            })();
+
+            var translateInitialized = false;
+
+            function googleTranslateInit() {
+                if (translateInitialized) {
+                    console.log('Google Translate already initialized.');
+                    return; // Prevent multiple initializations
+                }
+
+                try {
+                    // console.log('Initializing Google Translate...');
+                    new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            includedLanguages: '<?php echo e($includedLanguages); ?>',
+                        },
+                        'google_translate_button'
+                    );
+                    translateInitialized = true; // Mark as initialized
+                    // console.log('Google Translate initialized successfully.');
+                } catch (error) {
+                    console.error('Google Translate failed to initialize:', error);
+                }
+            }
+        </script>
 
 
 </body>

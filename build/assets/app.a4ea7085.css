@@ -18033,3 +18033,8 @@ html body {
         color: rgb(var(--color-success) / var(--tw-text-opacity))
     }
 }
+
+.navSActive {
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-slate-100) / var(--tw-bg-opacity)) !important;
+}

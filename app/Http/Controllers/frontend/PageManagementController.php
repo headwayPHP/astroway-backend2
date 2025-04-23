@@ -216,30 +216,43 @@ class PageManagementController extends Controller
             'reason' => 'nullable|string',
         ]);
 
-        // Combine date and time fields
-        $preferred_date = $request->year && $request->month && $request->day
+        // Filter out fields with empty string values
+        $data = collect($request->only([
+            'name',
+            'email',
+            'mobile',
+            'gender',
+            'time_of_day',
+            'way_to_reach',
+            'address',
+            'reason',
+        ]))->filter(function ($value) {
+            return $value !== '';
+        })->toArray();
+
+        // Combine date and time if available and valid
+        $preferred_date = $request->year !== '' && $request->month !== '' && $request->day !== ''
             ? $request->year . '-' . str_pad($request->month, 2, '0', STR_PAD_LEFT) . '-' . str_pad($request->day, 2, '0', STR_PAD_LEFT)
             : null;
 
-        $preferred_time = $request->hrs !== null && $request->mins !== null && $request->secs !== null
+        $preferred_time = $request->hrs !== '' && $request->mins !== '' && $request->secs !== ''
             ? str_pad($request->hrs, 2, '0', STR_PAD_LEFT) . ':' . str_pad($request->mins, 2, '0', STR_PAD_LEFT) . ':' . str_pad($request->secs, 2, '0', STR_PAD_LEFT)
             : null;
 
-        Appointment::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'gender' => $request->gender,
-            'time_of_day' => $request->time_of_day,
-            'way_to_reach' => $request->way_to_reach,
-            'preferred_date' => $preferred_date,
-            'preferred_time' => $preferred_time,
-            'address' => $request->address,
-            'reason' => $request->reason,
-        ]);
+        // Add date and time only if not null
+        if ($preferred_date) {
+            $data['preferred_date'] = $preferred_date;
+        }
+
+        if ($preferred_time) {
+            $data['preferred_time'] = $preferred_time;
+        }
+
+        Appointment::create($data);
 
         return redirect()->back()->with('success', 'Appointment submitted successfully.');
     }
+
 
 
 

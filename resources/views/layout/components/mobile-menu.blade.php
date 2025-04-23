@@ -1,6 +1,6 @@
 <!-- BEGIN: Mobile Menu -->
 <div class="mobile-menu md:hidden">
-    <div class="mobile-menu-bar" style="background-color:#426f7f">
+    <div class="mobile-menu-bar">
         <a href="" class="flex mr-auto">
             @php
                 $logo = DB::table('systemflag')->where('name', 'AdminLogo')->select('value')->first();

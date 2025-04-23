@@ -21,6 +21,7 @@ class AppFeedbackController extends Controller
     public $path;
     public $limit = 15;
     public $paginationStart;
+
     public function getAppFeedback(Request $request)
     {
         try {
@@ -191,7 +192,6 @@ class AppFeedbackController extends Controller
     }
 
 
-
     // List all services
     public function serviceList(Request $request)
     {
@@ -205,7 +205,7 @@ class AppFeedbackController extends Controller
                 $query = Service::query();
 
                 if (!empty($searchString)) {
-                    $query->where('service_name', 'LIKE', '%' . $searchString . '%');
+                    $query->where('service_title', 'LIKE', '%' . $searchString . '%');
                 }
 
                 $totalRecords = $query->count();
@@ -233,7 +233,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -252,7 +252,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -294,7 +294,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -307,7 +307,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -324,7 +324,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -374,7 +374,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -403,7 +403,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -448,7 +448,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -465,7 +465,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -491,7 +491,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -504,7 +504,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -521,7 +521,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -559,7 +559,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error adding client: ' . $e->getMessage());
         }
     }
@@ -583,7 +583,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error deleting client: ' . $e->getMessage());
         }
     }
@@ -630,7 +630,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -647,7 +647,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -682,7 +682,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
         }
     }
@@ -696,7 +696,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -713,7 +713,7 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -753,11 +753,10 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error adding testimonial: ' . $e->getMessage());
         }
     }
-
 
 
     public function testimonialDelete($id)
@@ -779,12 +778,10 @@ class AppFeedbackController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error deleting testimonial: ' . $e->getMessage());
         }
     }
-
-
 
 
 }

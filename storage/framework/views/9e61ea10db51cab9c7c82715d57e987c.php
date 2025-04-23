@@ -125,24 +125,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-                                <a href="<?php echo e(route('testimoniallist')); ?>">
-                                    <div class="report-box zoom-in">
-                                        <div class="box p-5">
-                                            <div class="flex">
-                                                <i data-lucide="shopping-cart" class="report-box__icon text-success"></i>
-                                                <div class="ml-auto">
-                                                </div>
-                                            </div>
-                                            <div class="text-3xl font-medium leading-8 mt-6">
-                                                <?php echo e($dash['testimonialCount']); ?>
-
-                                            </div>
-                                            <div class="text-base text-slate-500 mt-1">Total Testimonials</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            
 
                             
                         </div>
@@ -163,7 +146,7 @@
                                             <tr>
                                                 <th class="whitespace-nowrap">Name</th>
                                                 <th class="whitespace-nowrap">Contact</th>
-                                                <th class="whitespace-nowrap">Date/Time</th>
+                                                
                                                 <th class="whitespace-nowrap">Reason</th>
                                             </tr>
                                         </thead>
@@ -183,18 +166,7 @@
 
                                                         <?php endif; ?>
                                                     </td>
-                                                    <td>
-                                                        <?php if($appointment->preferred_date): ?>
-                                                            <?php echo e(date('d M Y', strtotime($appointment->preferred_date))); ?>
-
-                                                            <?php if($appointment->preferred_time): ?>
-                                                                <br><?php echo e(date('h:i A', strtotime($appointment->preferred_time))); ?>
-
-                                                            <?php endif; ?>
-                                                        <?php else: ?>
-                                                            Not specified
-                                                        <?php endif; ?>
-                                                    </td>
+                                                    
                                                     <td class="text-truncate" style="max-width: 150px;"
                                                         title="<?php echo e($appointment->reason); ?>">
                                                         <?php echo e(Str::limit($appointment->reason, 30)); ?>
@@ -221,7 +193,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="whitespace-nowrap">Name</th>
-                                                <th class="whitespace-nowrap">Birth Details</th>
+                                                
                                                 <th class="whitespace-nowrap">Location</th>
                                                 <th class="whitespace-nowrap">Notes</th>
                                             </tr>
@@ -233,11 +205,7 @@
                                                         <span
                                                             class="font-medium whitespace-nowrap"><?php echo e($booking->fullname); ?></span>
                                                     </td>
-                                                    <td>
-                                                        <?php echo e(date('d M Y', strtotime($booking->birthdate))); ?><br>
-                                                        <?php echo e(date('h:i A', strtotime($booking->birthtime))); ?>
-
-                                                    </td>
+                                                    
                                                     <td>
                                                         <?php echo e($booking->city); ?><br>
                                                         <?php echo e(Str::limit($booking->address, 20)); ?>
@@ -255,94 +223,60 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-span-12 lg:col-span-12">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Contact Us</h2>
+                                <a href="<?php echo e(route('contactlist')); ?>" class="ml-auto text-primary truncate">View All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Email</th>
+                                                <th class="whitespace-nowrap">Message</th>
+                                                <th class="whitespace-nowrap text-center">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <?php $__currentLoopData = $latestContacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $contact): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap"><?php echo e($contact->contact_name ?? '--'); ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="whitespace-nowrap"><?php echo e($contact->contact_email ?? '--'); ?></span>
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 180px;"
+                                                        title="<?php echo e($contact->contact_message); ?>">
+                                                        <?php echo e(Str::limit(ucwords($contact->contact_message), 40, '...')); ?>
+
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php echo e(\Carbon\Carbon::parse($contact->created_at)->format('d M, Y h:i A')); ?>
+
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <!-- END: Latest Appointments & Remote Bookings -->
-                <div class="col-span-12 lg:col-span-6 mt-8">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Monthly Earning Report</h2>
 
-                    </div>
-                    <h6>Last 12 Months</h6>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        <div class="report-chart">
-                            <div class="h-[275px]">
-                                <canvas id="myChart" height="100px"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-12 lg:col-span-6 mt-8">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Monthly Request</h2>
-
-                    </div>
-                    <h6>Last 12 Months</h6>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        <div class="report-chart">
-                            <div class="h-[275px]">
-                                <canvas id="requestChart" height="100px"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- BEGIN: Weekly Top Products -->
-        <div class="col-span-12 mt-6">
-            <div class="intro-y block sm:flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">Top Astrologer</h2>
-                <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
-                </div>
-            </div>
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                <table class="table table-report sm:mt-2" aria-label="">
-                    <thead>
-                        <tr>
-                            <th class="whitespace-nowrap">Profile</th>
-                            <th class="whitespace-nowrap">Name</th>
-                            <th class="text-center whitespace-nowrap">ContactNo</th>
-                            <th class="text-center whitespace-nowrap">Total Request</th>
-                            <th class="text-center whitespace-nowrap">Languages</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $__currentLoopData = $dash['topAstrologer']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $top): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr class="intro-x">
-                                <td class="w-40">
-                                    <div class="flex">
-                                        <div class="w-10 h-10 image-fit zoom-in">
-                                            <img class="rounded-full" src="<?php echo e($top->profileImage); ?>"
-                                                onerror="this.onerror=null;this.src="<?php echo e(asset('images/person.png')); ?>";"
-                                                alt="Astrologer image" />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="w-40">
-                                    <a class="font-medium whitespace-nowrap"><?php echo e($top->name); ?></a>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                    </div>
-                                </td>
-                                <td class="text-center w-40"><?php echo e($top->contactNo); ?></td>
-                                <td class="w-40">
-                                    <div class="flex items-center justify-center">
-                                        <i data-lucide="phone-call" class="w-4 h-4 mr-2"></i>
-                                        <?php echo e($top->totalCallRequest); ?> /<i data-lucide="message-square"
-                                            class="w-4 h-4 mr-2 ml-2"></i><?php echo e($top->totalChatRequest); ?>
 
-
-                                    </div>
-                                </td>
-                                <td class="w-40 text-center">
-                                    <a class="font-medium whitespace-nowrap"><?php echo e($top->languageKnown); ?></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
         <?php if(count($dash['unverifiedAstrologer']) > 0): ?>
             <div class="col-span-12 mt-6">
                 <div class="intro-y block sm:flex items-center h-10">

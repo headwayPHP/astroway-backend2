@@ -41,10 +41,12 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
 
-        if (!\Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ])) {
+        if (
+            !\Auth::attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])
+        ) {
             return dd('error');
         }
     }
@@ -68,7 +70,7 @@ class AuthController extends Controller
             $user = Auth::guard('web')->user();
             return view('pages.edit-profile', compact('user'));
         } else {
-            return redirect(LOGINPATH);
+            return redirect('dashboard');
         }
     }
 
@@ -141,7 +143,7 @@ class AuthController extends Controller
                 return redirect('/admin/login');
             }
 
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return dd($e->getMessage());
         }
     }

@@ -84,7 +84,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="layout_map">Layout/Floor Plan (DWG/PDF/Image) *</label>
                                     <div class="form-group position-relative ">
-                                        <input class="form-control " type="file" id="layout_map" name="layout_map"
+                                        <input class="form-control align-content-center " type="file" id="layout_map" name="layout_map"
                                             accept=".pdf,.jpg,.jpeg,.png" required data-bs-toggle="tooltip"
                                             data-bs-placement="right"
                                             title="Upload a clear image or PDF of your property layout.">
@@ -95,7 +95,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="compass_reading">Compass Reading (Image/Video) *</label>
                                     <div class="form-group position-relative">
-                                        <input class="form-control" type="file" id="compass_reading"
+                                        <input class="form-control  align-content-center" type="file" id="compass_reading"
                                             name="compass_reading" accept=".jpg,.jpeg,.png,.mp4,.mov" required
                                             data-bs-toggle="tooltip" data-bs-placement="right"
                                             title="Upload an image or video clearly showing compass directions.">
@@ -115,7 +115,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <label for="property_video">Property Video Walkthrough (Optional)</label>
                                     <div class="form-group position-relative">
-                                        <input class="form-control" type="file" id="property_video"
+                                        <input class="form-control  align-content-center" type="file" id="property_video"
                                             name="property_video" accept=".mp4,.mov" data-bs-toggle="tooltip"
                                             data-bs-placement="right"
                                             title="Optional: Upload a video walkthrough showing all rooms and directions.">

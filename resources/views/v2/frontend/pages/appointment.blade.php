@@ -14,9 +14,9 @@
                         in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
                         predefined chunks as necessary, making this the first true generator on the Internet.</p>
                     <!-- <p class="px_font14 px_padderBottom20 text-center">It uses a dictionary of over 200 Latin words,
-                                                                                                                                                                                                                                                                                    combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
-                                                                                                                                                                                                                                                                                    reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected
-                                                                                                                                                                                                                                                                                    humour, or non-characteristic words etc.</p> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            humour, or non-characteristic words etc.</p> -->
 
 
 
@@ -38,7 +38,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Email</label>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Email" name="email">
+                                        <input class="form-control" type="text" placeholder="Email" name="email"
+                                            required>
                                     </div>
                                 </div>
 
@@ -47,7 +48,7 @@
                                     <label>Mobile Number</label>
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="Mobile Number"
-                                            name="mobile">
+                                            name="mobile" required>
                                     </div>
                                 </div>
 
@@ -55,7 +56,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Gender</label>
                                     <div class="form-group px_select_box">
-                                        <select class="form-control" name="gender">
+                                        <select class="form-control" name="gender" required>
+                                            <option value="">Choose a Gender 🡇</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
@@ -66,7 +68,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Time of Day</label>
                                     <div class="form-group px_select_box">
-                                        <select class="form-control" name="time_of_day">
+                                        <select class="form-control" name="time_of_day" required>
+                                            <option value="">Choose prefered time 🡇</option>
                                             <option value="morning">Morning</option>
                                             <option value="afternoon">Afternoon</option>
                                             <option value="evening">Evening</option>
@@ -77,11 +80,14 @@
                                 {{-- Way to Reach --}}
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Way to Reach</label>
-                                    <div class="form-group px_select_box">
-                                        <select class="form-control" name="way_to_reach">
+                                    <div class="form-group px_select_box d-flex align-items-center">
+                                        <select class="form-control" name="way_to_reach" required>
+                                            <option value="">Choose prefered way to reach 🡇</option>
                                             <option value="phone">Phone</option>
                                             <option value="email">Email</option>
+
                                         </select>
+
                                     </div>
                                 </div>
 
@@ -91,20 +97,20 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Date"
-                                                    name="day">
+                                                <input class="form-control" type="text" placeholder="Date" name="day"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <input class="form-control" type="text" placeholder="Month"
-                                                    name="month">
+                                                    name="month" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Year"
-                                                    name="year">
+                                                <input class="form-control" type="text" placeholder="Year" name="year"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -116,18 +122,20 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Hrs" name="hrs">
+                                                <input class="form-control" type="text" placeholder="Hrs" name="hrs"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Mins"
-                                                    name="mins">
+                                                <input class="form-control" type="text" placeholder="Mins" name="mins"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Sec" name="secs">
+                                                <input class="form-control" type="text" placeholder="Sec" name="secs"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +145,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Address</label>
                                     <div class="form-group">
-                                        <textarea placeholder="Address" class="form-control" name="address"></textarea>
+                                        <textarea placeholder="Address" class="form-control" name="address" required></textarea>
                                     </div>
                                 </div>
 
@@ -145,7 +153,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Reason for Appointment</label>
                                     <div class="form-group">
-                                        <textarea placeholder="Message" class="form-control" name="reason"></textarea>
+                                        <textarea placeholder="Message" class="form-control" name="reason"> required</textarea>
                                     </div>
                                 </div>
 

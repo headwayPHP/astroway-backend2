@@ -73,9 +73,9 @@
                         <?php if($menu == 'devider'): ?>
                             <li class="side-nav__devider my-6"></li>
                         <?php else: ?>
-                            <li>
-                                <a href="<?php echo e(isset($menu->route) ? route($menu->route) : 'javascript:;'); ?>"
-                                    class="<?php echo e($first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu'); ?>">
+                            <li class="navActive">
+                                <a href="<?php echo e(isset($menu->route) ? route($menu->route) : 'javascript:;'); ?> "
+                                    class="<?php echo e($first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu'); ?> <?php echo e(request()->routeIs($menu->route) ? 'navSActive' : ''); ?>">
                                     <div class="side-menu__icon">
                                         <i data-lucide="<?php echo e($menu->icon); ?>"></i>
                                     </div>

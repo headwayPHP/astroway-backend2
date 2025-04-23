@@ -21,8 +21,8 @@
                             <div class="sm:grid grid-cols-2 gap-4">
                                 <div class="input">
                                     <label class="form-label">Service Icon</label>
-                                    <input type="file" name="service_icon" class="form-control inputs" required
-                                        onchange="previewImage(this, '#preview-icon')">
+                                    <input type="file" accept="image/*" name="service_icon" class="form-control inputs"
+                                        required onchange="previewImage(this, '#preview-icon')">
                                     <img id="preview-icon" class="mt-2 h-16" style="display: none;">
                                     <div class="text-danger print-service-icon-error-msg mb-2" style="display:none">
                                         <ul></ul>
@@ -31,8 +31,8 @@
 
                                 <div class="input">
                                     <label class="form-label">Service Banner</label>
-                                    <input type="file" name="service_banner" class="form-control inputs" required
-                                        onchange="previewImage(this, '#preview-banner')">
+                                    <input type="file" accept="image/*" name="service_banner" class="form-control inputs"
+                                        required onchange="previewImage(this, '#preview-banner')">
                                     <img id="preview-banner" class="mt-2 h-20" style="display: none;">
                                     <div class="text-danger print-service-banner-error-msg mb-2" style="display:none">
                                         <ul></ul>
@@ -41,7 +41,8 @@
 
                                 <div class="input col-span-2 mt-2">
                                     <label class="form-label">Service Images (Multiple)</label>
-                                    <input type="file" name="service_images[]" class="form-control inputs" multiple
+                                    <input type="file" accept="image/*" name="service_images[]"
+                                        class="form-control inputs" multiple
                                         onchange="previewMultipleImages(this, '#preview-multiple')">
                                     <div id="preview-multiple" class="flex gap-2 mt-2 flex-wrap"></div>
                                     <div class="text-danger print-service-images-error-msg mb-2" style="display:none">

@@ -121,7 +121,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+                            {{-- <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
                                 <a href="{{ route('testimoniallist') }}">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
@@ -137,7 +137,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
                                 <a href="{{ route('story-list') }}">
@@ -173,7 +173,7 @@
                                             <tr>
                                                 <th class="whitespace-nowrap">Name</th>
                                                 <th class="whitespace-nowrap">Contact</th>
-                                                <th class="whitespace-nowrap">Date/Time</th>
+                                                {{-- <th class="whitespace-nowrap">Date/Time</th> --}}
                                                 <th class="whitespace-nowrap">Reason</th>
                                             </tr>
                                         </thead>
@@ -192,7 +192,7 @@
                                                             {{ $appointment->email }}
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         @if ($appointment->preferred_date)
                                                             {{ date('d M Y', strtotime($appointment->preferred_date)) }}
                                                             @if ($appointment->preferred_time)
@@ -201,7 +201,7 @@
                                                         @else
                                                             Not specified
                                                         @endif
-                                                    </td>
+                                                    </td> --}}
                                                     <td class="text-truncate" style="max-width: 150px;"
                                                         title="{{ $appointment->reason }}">
                                                         {{ Str::limit($appointment->reason, 30) }}
@@ -227,7 +227,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="whitespace-nowrap">Name</th>
-                                                <th class="whitespace-nowrap">Birth Details</th>
+                                                {{-- <th class="whitespace-nowrap">Birth Details</th> --}}
                                                 <th class="whitespace-nowrap">Location</th>
                                                 <th class="whitespace-nowrap">Notes</th>
                                             </tr>
@@ -239,10 +239,10 @@
                                                         <span
                                                             class="font-medium whitespace-nowrap">{{ $booking->fullname }}</span>
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ date('d M Y', strtotime($booking->birthdate)) }}<br>
                                                         {{ date('h:i A', strtotime($booking->birthtime)) }}
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         {{ $booking->city }}<br>
                                                         {{ Str::limit($booking->address, 20) }}
@@ -258,93 +258,58 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-span-12 lg:col-span-12">
+                            <div class="intro-y block sm:flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">Latest Contact Us</h2>
+                                <a href="{{ route('contactlist') }}" class="ml-auto text-primary truncate">View All</a>
+                            </div>
+                            <div class="intro-y box p-5 mt-5">
+                                <div class="overflow-x-auto">
+                                    <table class="table table-report">
+                                        <thead>
+                                            <tr>
+                                                <th class="whitespace-nowrap">Name</th>
+                                                <th class="whitespace-nowrap">Email</th>
+                                                <th class="whitespace-nowrap">Message</th>
+                                                <th class="whitespace-nowrap text-center">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($latestContacts as $contact)
+                                                <tr class="intro-x">
+                                                    <td>
+                                                        <span
+                                                            class="font-medium whitespace-nowrap">{{ $contact->contact_name ?? '--' }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="whitespace-nowrap">{{ $contact->contact_email ?? '--' }}</span>
+                                                    </td>
+                                                    <td class="text-truncate" style="max-width: 180px;"
+                                                        title="{{ $contact->contact_message }}">
+                                                        {{ Str::limit(ucwords($contact->contact_message), 40, '...') }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ \Carbon\Carbon::parse($contact->created_at)->format('d M, Y h:i A') }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <!-- END: Latest Appointments & Remote Bookings -->
-                <div class="col-span-12 lg:col-span-6 mt-8">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Monthly Earning Report</h2>
 
-                    </div>
-                    <h6>Last 12 Months</h6>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        <div class="report-chart">
-                            <div class="h-[275px]">
-                                <canvas id="myChart" height="100px"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-12 lg:col-span-6 mt-8">
-                    <div class="intro-y block sm:flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Monthly Request</h2>
-
-                    </div>
-                    <h6>Last 12 Months</h6>
-                    <div class="intro-y box p-5 mt-12 sm:mt-5">
-                        <div class="report-chart">
-                            <div class="h-[275px]">
-                                <canvas id="requestChart" height="100px"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- BEGIN: Weekly Top Products -->
-        <div class="col-span-12 mt-6">
-            <div class="intro-y block sm:flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">Top Astrologer</h2>
-                <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
-                </div>
-            </div>
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                <table class="table table-report sm:mt-2" aria-label="">
-                    <thead>
-                        <tr>
-                            <th class="whitespace-nowrap">Profile</th>
-                            <th class="whitespace-nowrap">Name</th>
-                            <th class="text-center whitespace-nowrap">ContactNo</th>
-                            <th class="text-center whitespace-nowrap">Total Request</th>
-                            <th class="text-center whitespace-nowrap">Languages</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($dash['topAstrologer'] as $top)
-                            <tr class="intro-x">
-                                <td class="w-40">
-                                    <div class="flex">
-                                        <div class="w-10 h-10 image-fit zoom-in">
-                                            <img class="rounded-full" src="{{ $top->profileImage }}"
-                                                onerror="this.onerror=null;this.src="{{ asset('images/person.png') }}";"
-                                                alt="Astrologer image" />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="w-40">
-                                    <a class="font-medium whitespace-nowrap">{{ $top->name }}</a>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                    </div>
-                                </td>
-                                <td class="text-center w-40">{{ $top->contactNo }}</td>
-                                <td class="w-40">
-                                    <div class="flex items-center justify-center">
-                                        <i data-lucide="phone-call" class="w-4 h-4 mr-2"></i>
-                                        {{ $top->totalCallRequest }} /<i data-lucide="message-square"
-                                            class="w-4 h-4 mr-2 ml-2"></i>{{ $top->totalChatRequest }}
 
-                                    </div>
-                                </td>
-                                <td class="w-40 text-center">
-                                    <a class="font-medium whitespace-nowrap">{{ $top->languageKnown }}</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
         @if (count($dash['unverifiedAstrologer']) > 0)
             <div class="col-span-12 mt-6">
                 <div class="intro-y block sm:flex items-center h-10">

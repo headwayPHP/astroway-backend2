@@ -37,55 +37,46 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 col-md-12">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="px_contact_form">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h4 class="px_subheading">Have A Question?</h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <form>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="form-group">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label>Full Name</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <input type="text" class="form-control require" id="full_name" name="full_name">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="form-group">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label>Email Address</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <input type="text" class="form-control" id="email" name="email" data-valid="email"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                data-error="Email should be valid.">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="form-group">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label>Message</label>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <textarea class="form-control rquire" id="message" name="message"></textarea>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <button type="button" class="px_btn submitForm">submit</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="response"></div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </form>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div> -->
                 <div class="col-lg-6 col-md-12">
                     <div class="px_contact_form px_form_style">
                         <h3 class="px_subheading px_form_title">Have A Question?</h3>
                         <form id="contactForm" class="px_needs-validation" method="POST"
                             action="{{ route('front.store.contact') }}" novalidate>
                             @csrf
+
+                            <!-- Full Name -->
                             <div class="form-group px_input_group" style="border:none;">
                                 <label for="full_name" class="px_input_label">Full Name *</label>
-                                <input type="text" class="form-control px_input_field" id="full_name" name="contact_name"
-                                    required>
-                                <div class="px_invalid_feedback">Please provide your name.</div>
+                                <input type="text"
+                                    class="form-control px_input_field @error('contact_name') is-invalid @enderror"
+                                    id="full_name" name="contact_name" value="{{ old('contact_name') }}" required>
+                                @error('contact_name')
+                                    <small class="text-white">{{ $message }}</small>
+                                @enderror
                             </div>
 
+                            <!-- Email -->
                             <div class="form-group px_input_group" style="border:none;">
                                 <label for="email" class="px_input_label">Email Address *</label>
-                                <input type="email" class="form-control px_input_field" id="email"
-                                    name="contact_email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                                <div class="px_invalid_feedback">Please provide a valid email address.</div>
+                                <input type="email"
+                                    class="form-control px_input_field @error('contact_email') is-invalid @enderror"
+                                    id="email" name="contact_email" value="{{ old('contact_email') }}" required>
+                                @error('contact_email')
+                                    <small class="text-white">{{ $message }}</small>
+                                @enderror
                             </div>
 
+                            <!-- Message -->
                             <div class="form-group px_input_group" style="border:none;">
                                 <label for="message" class="px_input_label">Your Message *</label>
-                                <textarea class="form-control px_input_field px_textarea" id="message" name="contact_message" rows="5" required></textarea>
-                                <div class="px_invalid_feedback">Please enter your message.</div>
+                                <textarea class="form-control px_input_field px_textarea @error('contact_message') is-invalid @enderror" id="message"
+                                    name="contact_message" rows="5" required>{{ old('contact_message') }}</textarea>
+                                @error('contact_message')
+                                    <small class="text-white">{{ $message }}</small>
+                                @enderror
                             </div>
 
+                            <!-- Submit Button -->
                             <div class="px_form_actions" style="transform: translateX(20px);">
                                 <button type="submit" class="px_btn px_btn_primary px_submit_btn">
                                     <span class="px_btn_text">Submit</span>
@@ -97,9 +88,9 @@
                                     </span>
                                 </button>
                             </div>
-
-                            <div class="px_form_response mt-3"></div>
                         </form>
+
+
                     </div>
                 </div>
 

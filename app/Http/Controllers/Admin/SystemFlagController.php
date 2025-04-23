@@ -16,22 +16,22 @@ class SystemFlagController extends Controller
     public function getSystemFlag(Request $req)
     {
         try {
-			
+
             if (Auth::guard('web')->check()) {
                 $flagGroup = DB::table('flaggroup')->whereNull('parentFlagGroupId')->get();
                 for ($i = 0; $i < count($flagGroup); $i++) {
-                    $subGroup = DB::Table('flaggroup')->where('viewenable',1)->where('parentFlagGroupId', $flagGroup[$i]->id)->get();
+                    $subGroup = DB::Table('flaggroup')->where('viewenable', 1)->where('parentFlagGroupId', $flagGroup[$i]->id)->where('isActive', 1)->get();
                     if ($subGroup && count($subGroup) > 0) {
                         for ($j = 0; $j < count($subGroup); $j++) {
-                            $systemFlag = $systemFlag = DB::table('systemflag')->where('isActive',1)->where('flagGroupId', $subGroup[$j]->id)->get();
+                            $systemFlag = $systemFlag = DB::table('systemflag')->where('isActive', 1)->where('flagGroupId', $subGroup[$j]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
                             $subGroup[$j]->systemFlag = $systemFlag;
 
                         }
                         $flagGroup[$i]->subGroup = $subGroup;
-                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->get();
+                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
                         $flagGroup[$i]->systemFlag = $systemFlag;
                     } else {
-                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->get();
+                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
                         $flagGroup[$i]->systemFlag = $systemFlag;
                         $flagGroup[$i]->subGroup = [];
                     }
@@ -41,9 +41,9 @@ class SystemFlagController extends Controller
                 $astroApiCallType = $mstData[0]->astro_api_call_type;
                 return view('pages.system-flag', compact('flagGroup', 'language', 'astroApiCallType'));
             } else {
-                return redirect('/admin/login');
+                return redirect()->route('front.home');
             }
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return dd($e->getMessage());
         }
     }
@@ -51,20 +51,20 @@ class SystemFlagController extends Controller
     public function editSystemFlag(Request $req)
     {
 
-       
+
         try {
-			//   return response()->json([
+            //   return response()->json([
             //     'error' => ["This Option is disabled for Demo!"],
             // ]);
-            
+
             if (Auth::guard('web')->check()) {
-              //  MstControl::where('id', 1)->update(['astro_api_call_type' => trim($req->astroApiCallType)]);
+                //  MstControl::where('id', 1)->update(['astro_api_call_type' => trim($req->astroApiCallType)]);
 
                 $flaggroups = $req->input('flaggroups');
 
                 foreach ($flaggroups as $subGroupId => $data) {
                     $isActive = $data['isActive'] ?? 0; // Default to 0 if not present
-            
+
                     DB::table('flaggroup')
                         ->where('id', '=', $data['id'])
                         ->update(['isActive' => $isActive]);
@@ -158,7 +158,7 @@ class SystemFlagController extends Controller
             } else {
                 return redirect('/admin/login');
             }
-        } catch (\Exception$e) {
+        } catch (\Exception $e) {
             return dd($e->getMessage());
         }
     }

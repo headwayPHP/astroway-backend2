@@ -26,7 +26,7 @@
                                         <img src="{{ asset('storage/app/public/' . $service->service_icon) }}"
                                             class="h-16 mb-2 rounded" />
                                     @endif
-                                    <input type="file" name="service_icon" class="form-control inputs"
+                                    <input type="file" accept="image/*" name="service_icon" class="form-control inputs"
                                         onchange="previewImage(this, '#preview-icon')">
                                     <img id="preview-icon" class="mt-2 h-16" style="display: none;">
                                     <div class="text-danger print-service-icon-error-msg mb-2" style="display:none">
@@ -40,7 +40,7 @@
                                         <img src="{{ asset('storage/app/public/' . $service->service_banner) }}"
                                             class="h-20 mb-2 rounded" />
                                     @endif
-                                    <input type="file" name="service_banner" class="form-control inputs"
+                                    <input type="file" accept="image/*" name="service_banner" class="form-control inputs"
                                         onchange="previewImage(this, '#preview-banner')">
                                     <img id="preview-banner" class="mt-2 h-20" style="display: none;">
                                     <div class="text-danger print-service-banner-error-msg mb-2" style="display:none">
@@ -58,7 +58,8 @@
                                             @endforeach
                                         </div>
                                     @endif
-                                    <input type="file" name="service_images[]" class="form-control inputs" multiple
+                                    <input type="file" accept="image/*" name="service_images[]"
+                                        class="form-control inputs" multiple
                                         onchange="previewMultipleImages(this, '#preview-multiple')">
                                     <div id="preview-multiple" class="flex gap-2 mt-2 flex-wrap"></div>
                                     <div class="text-danger print-service-images-error-msg mb-2" style="display:none">

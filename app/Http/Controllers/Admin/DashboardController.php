@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Astrologer;
-use Carbon\Carbon;
 use DateTime;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Models\Contactus;
+use App\Models\Astrologer;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 define('MONTHGROUP', 'month(created_at)');
 
@@ -97,6 +98,12 @@ class DashboardController extends Controller
                     ->limit(5)
                     ->get();
 
+                $latestContacts = DB::table('contact_us')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+
+                // dd($latestContacts);
 
 
                 $totalEarning = DB::table('admin_get_commissions')
@@ -231,6 +238,7 @@ class DashboardController extends Controller
                     "latestAppointments" => $latestAppointments,
                     "latestRemoteBookings" => $latestRemoteBookings,
                     "testimonialCount" => $testimonialCount,
+                    "latestContacts" => $latestContacts,
                     "clientCount" => $clientCount,
                     "serviceCount" => $serviceCount,
                     "totalEarning" => $totalEarning,
@@ -267,7 +275,7 @@ class DashboardController extends Controller
                     array_push($reportData, $report['totalReport']);
                 }
                 $result = $dashboardData;
-                return view('pages.dashboard-overview-1', compact('result', 'labels', 'data', 'callData', 'chatData', 'reportData', 'latestAppointments', 'latestRemoteBookings'));
+                return view('pages.dashboard-overview-1', compact('result', 'labels', 'data', 'callData', 'chatData', 'reportData', 'latestAppointments', 'latestRemoteBookings', 'latestContacts', 'unverifiedAstrologer', 'topAstrologers'));
             } else {
                 return redirect('admin/login');
             }

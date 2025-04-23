@@ -2918,7 +2918,7 @@ body.px-indexLight .px_footer_widget .px_contact_list li svg {
 .px_contact_form textarea.form-control {
     resize: none;
     height: 120px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     background-color: var(--color1);
     /* border-radius: 17px; */
 }
@@ -4833,3 +4833,13 @@ body.px-indexLight .slick-dots li.slick-active {
 }
 
 */
+
+
+.navSActive {
+    background-color: var(--white-color);
+}
+
+.navSActive {
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-slate-100) / var(--tw-bg-opacity))
+}
