@@ -18,9 +18,10 @@ class SystemFlagController extends Controller
         try {
 
             if (Auth::guard('web')->check()) {
-                $flagGroup = DB::table('flaggroup')->whereNull('parentFlagGroupId')->get();
+                $flagGroup = DB::table('flaggroup')->whereNull('parentFlagGroupId')->where('isActive',1)->get();
                 for ($i = 0; $i < count($flagGroup); $i++) {
                     $subGroup = DB::Table('flaggroup')->where('viewenable', 1)->where('parentFlagGroupId', $flagGroup[$i]->id)->where('isActive', 1)->get();
+
                     if ($subGroup && count($subGroup) > 0) {
                         for ($j = 0; $j < count($subGroup); $j++) {
                             $systemFlag = $systemFlag = DB::table('systemflag')->where('isActive', 1)->where('flagGroupId', $subGroup[$j]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
@@ -28,10 +29,12 @@ class SystemFlagController extends Controller
 
                         }
                         $flagGroup[$i]->subGroup = $subGroup;
-                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
+                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->where('isActive',1)->get();
+
                         $flagGroup[$i]->systemFlag = $systemFlag;
                     } else {
-                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
+                        //$systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->get();
+                        $systemFlag = DB::table('systemflag')->where('flagGroupId', $flagGroup[$i]->id)->whereNotBetween('flagGroupId', [32, 48])->where('isActive',1)->get();
                         $flagGroup[$i]->systemFlag = $systemFlag;
                         $flagGroup[$i]->subGroup = [];
                     }

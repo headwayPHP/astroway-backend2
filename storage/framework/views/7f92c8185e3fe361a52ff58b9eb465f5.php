@@ -92,3 +92,4 @@
         </div>
     </div>
 </section>
+<?php /**PATH C:\xampp\htdocs\astroway-backend2\resources\views/v2/frontend/components/whychooseus.blade.php ENDPATH**/ ?>

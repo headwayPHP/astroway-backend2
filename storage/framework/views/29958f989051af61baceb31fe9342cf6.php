@@ -48,7 +48,7 @@
                             <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
                                     <a href="<?php echo e(url('services-details?id=' . $service->id)); ?>">
-                                        <span>
+                                        <span >
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 preserveAspectRatio="xMidYMid" width="8" height="12"

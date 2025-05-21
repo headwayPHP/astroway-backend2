@@ -124,7 +124,7 @@
                     <?php if($service->service_images && is_array(json_decode($service->service_images, true))): ?>
                         <div class="grid  md:grid-cols-4 gap-4 mt-2">
                             <?php $__currentLoopData = json_decode($service->service_images, true); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="relative w-full">
+                                <div class="relative">
                                     <img src="<?php echo e(asset('storage/app/public/' . $image)); ?>" alt="Service Image"
                                          class="image-thumbnail" onclick="openImageModal(this.src)">
                                     <a href="<?php echo e(asset('storage/app/public/' . $image)); ?>" download

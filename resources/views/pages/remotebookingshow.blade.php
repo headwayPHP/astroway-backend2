@@ -145,20 +145,20 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 pt-4 border-t border-gray-200">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-500">Created At</label>
-                            <p class="mt-1 text-gray-900">
-                                {{ $booking->created_at ? \Carbon\Carbon::parse($booking->created_at)->format('j F Y h:i A') : 'N/A' }}
-                            </p>
-                        </div>
-                        <div class="text-right">
-                            <label class="block text-sm font-medium text-gray-500">Booking ID</label>
-                            <p class="mt-1 text-gray-900 font-mono">{{ $booking->id ?? 'N/A' }}</p>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="md:col-span-2 pt-4 border-t border-gray-200">--}}
+{{--                    <div class="flex justify-between items-center">--}}
+{{--                        <div>--}}
+{{--                            <label class="block text-sm font-medium text-gray-500">Created At</label>--}}
+{{--                            <p class="mt-1 text-gray-900">--}}
+{{--                                {{ $booking->created_at ? \Carbon\Carbon::parse($booking->created_at)->format('j F Y h:i A') : 'N/A' }}--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <div class="text-right">--}}
+{{--                            <label class="block text-sm font-medium text-gray-500">Booking ID</label>--}}
+{{--                            <p class="mt-1 text-gray-900 font-mono">{{ $booking->id ?? 'N/A' }}</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
 

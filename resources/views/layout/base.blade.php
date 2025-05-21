@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<!--
-Template Name: Enigma - HTML Admin Dashboard Template
-Author: Left4code
-Website: http://www.left4code.com/
-Contact: muhammadrizki@left4code.com
-Purchase: https://themeforest.net/user/left4code/portfolio
-Renew Support: https://themeforest.net/user/left4code/portfolio
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ 'default' != 'default' ? ' ' . 'default' : '' }}">
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+      class="{{ 'default' != 'default' ? ' ' . 'default' : '' }}">
 <!-- BEGIN: Head -->
 @php
     $logo = DB::table('systemflag')
@@ -26,16 +19,18 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta charset="utf-8">
     <link as="image" fetchpriority="high" href="/{{ $logo->value }}" rel="preload shortcut icon">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" defer/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" defer>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          defer>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          defer>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Astroway Admin Panel">
+          content="Astroway Admin Panel">
     <meta name="keywords"
-        content="Astroway Admin Panel">
+          content="Astroway Admin Panel">
     <meta name="author" content="LEFT4CODE">
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-messaging.js"></script>
@@ -151,7 +146,7 @@ License: You must have a valid license purchased only from themeforest(the above
         }
 
         .text-green {
-            color: #78b144
+            color: #78b144;
         }
 
         .category {
@@ -214,7 +209,7 @@ License: You must have a valid license purchased only from themeforest(the above
             width: 600px;
         }
 
-        @media(max-width: 695px) {
+        @media (max-width: 695px) {
 
             .dailyaddbtn {
                 float: left;
@@ -225,7 +220,7 @@ License: You must have a valid license purchased only from themeforest(the above
             }
         }
 
-        @media(max-width: 920px) {
+        @media (max-width: 920px) {
             .horobtn:after {
                 display: none
             }
@@ -239,13 +234,13 @@ License: You must have a valid license purchased only from themeforest(the above
             }
         }
 
-        @media(max-width: 830px) {
+        @media (max-width: 830px) {
             .horedit {
                 margin-top: 20px
             }
         }
 
-        @media(max-width: 640px) {
+        @media (max-width: 640px) {
             .horosign {
                 margin-top: 0px !important
             }
@@ -308,7 +303,7 @@ License: You must have a valid license purchased only from themeforest(the above
             visibility: visible;
         }
 
-        .cke_notification.cke_notification_warning{
+        .cke_notification.cke_notification_warning {
             display: none;
         }
     </style>
@@ -320,18 +315,17 @@ License: You must have a valid license purchased only from themeforest(the above
     @vite('resources/css/app.css')
     <!-- END: CSS Assets-->
 </head>
-   {{-- Start Add Wallet Modal --}}
+{{-- Start Add Wallet Modal --}}
 
 
 
 @yield('body')
 
 <script>
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         $('#loading').hide();
     })
 </script>
-
 
 
 </html>

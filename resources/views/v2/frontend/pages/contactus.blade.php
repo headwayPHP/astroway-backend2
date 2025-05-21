@@ -78,7 +78,7 @@
 
                             <!-- Submit Button -->
                             <div class="px_form_actions" style="transform: translateX(20px);">
-                                <button type="submit" class="px_btn px_btn_primary px_submit_btn">
+                                <button type="submit" class="px_btn px_btn_primary px_submit_btn mt-4">
                                     <span class="px_btn_text">Submit</span>
                                     <span class="px_btn_loader" style="display:none;">
                                         <svg class="px_spinner" viewBox="0 0 50 50">

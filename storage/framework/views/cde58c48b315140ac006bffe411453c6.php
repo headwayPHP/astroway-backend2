@@ -5,7 +5,7 @@
 <?php $__env->startSection('subcontent'); ?>
     <div class="loader"></div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">Ads Videos</h2>
+        <h2 class="text-lg font-medium mr-auto">Videos</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a class="btn btn-primary shadow-md mr-2" data-tw-target="#add-video" data-tw-toggle="modal">Add New Video</a>
         </div>
@@ -75,7 +75,7 @@
                                 <div class="sm:grid grid-cols gap-2">
                                     <div class="input">
                                         <div>
-                                            <label for="youtubeLink" class="form-label">YouTube Link</label>
+                                            <label for="youtubeLink" class="form-label">Link</label>
                                             <input onkeypress="return validateJavascript(event);" type="text"
                                                 name="youtubeLink" id="youtubeLink" class="form-control"
                                                 placeholder="YouTube Link" required>
@@ -126,7 +126,7 @@
                                     <div class="input">
                                         <div>
                                             <input type="hidden" id="filed_id" name="filed_id">
-                                            <label for="youtubeLink" class="form-label">Youtube Link</label>
+                                            <label for="youtubeLink" class="form-label">Link</label>
                                             <input onkeypress="return validateJavascript(event);" type="text"
                                                 name="youtubeLink" id="id" class="form-control"
                                                 placeholder="Name" required>

@@ -5,18 +5,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1>Service Details</h1>
+                    <h1>{{ $service->service_title }}</h1>
 
                     <ul class="breadcrumb">
                         <li><a href="{{ url('/') }}">Home</a></li>
-                        <li>{{ $service->service_title }}</li>
+{{--                        <li>{{ $service->service_title }}</li>--}}
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="px_servicedetail_wrapper px_padderBottom80 px_padderTop80">
+    <section class="px_servicedetail_wrapper px_padderBottom80 ">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xxl-9 col-xl-9 col-lg-10 col-md-12 mx-auto">
@@ -27,7 +27,7 @@
                             alt="{{ $service->service_title }}" class="img-responsive mb-4">
 
                         {{-- Title --}}
-                        <h1 class="px_heading">{{ $service->service_title }}</h1>
+{{--                        <h1 class="px_heading">{{ $service->service_title }}</h1>--}}
 
                         {{-- Description --}}
                         <p class="px_font14 text-start">{!! nl2br(e($service->service_details)) !!}</p>

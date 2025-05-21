@@ -85,7 +85,7 @@
                             @foreach ($services as $service)
                                 <li>
                                     <a href="{{ url('services-details?id=' . $service->id) }}">
-                                        <span>
+                                        <span >
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 preserveAspectRatio="xMidYMid" width="8" height="12"

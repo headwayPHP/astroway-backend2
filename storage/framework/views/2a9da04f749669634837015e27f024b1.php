@@ -35,6 +35,12 @@ Author: PixelNX
             border: none !important;
             visibility: hidden !important;
         }
+        svg {
+            display:unset;
+        }
+        img {
+            display:unset;
+        }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -226,7 +232,7 @@ Author: PixelNX
             }
         </script>
 
-
+    </div>
 </body>
 
 <!-- Mirrored from kamleshyadav.com/templatemonster-html/Jyotish/index-light.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Feb 2025 11:28:39 GMT -->
