@@ -13,9 +13,9 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-4">
                     <div class="px_service_box px_service_box01 px_service_box_new text-center px-light-section-new">
                         <img src="{{ asset('storage/app/public/' . $service->service_icon) }}"
-                            alt="{{ $service->service_title }} Icon" width="80" height="80">
+                             alt="{{ $service->service_title }} Icon" width="80" height="80">
 
-                        <h4 class="px_subheading">{{ $service->service_title }}</h4>
+                        <h4 class="px_subheading"> {{ \Illuminate\Support\Str::limit(strip_tags($service->service_title), 25) }}</h4>
 
                         <p>{{ \Illuminate\Support\Str::limit(strip_tags($service->service_details), 80) }}</p>
 

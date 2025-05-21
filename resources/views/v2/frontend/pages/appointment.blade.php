@@ -1,5 +1,5 @@
 @extends('v2.frontend.layout.master')
-
+{{-- TODO: change text to number and test it.--}}
 @section('content')
     <section class="px_appointment_wrapper px_padderTop80 px_padderBottom80">
         <div class="container">
