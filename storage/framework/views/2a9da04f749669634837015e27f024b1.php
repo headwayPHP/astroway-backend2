@@ -22,7 +22,7 @@ Author: PixelNX
     <!-- stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="public/js/plugin/slick/slick.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo e(asset('public/js/plugin/slick/slick.css')); ?>">
     <link rel="stylesheet" type="text/css" media="screen" href="public/js/plugin/airdatepicker/datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
     <link rel="stylesheet" href="public/css/swiper-bundle.min.css">
@@ -64,7 +64,7 @@ Author: PixelNX
         <?php echo $__env->make('v2.frontend.layout.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->yieldContent('content'); ?>
         <?php
-            $limitedServices = \App\Models\Service::latest()->take(6)->get();
+            $limitedServices = \App\Models\Service::latest()->limit(3)->get();
         ?>
         <?php echo $__env->make('v2.frontend.layout.footer', ['services' => $limitedServices], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Modal -->

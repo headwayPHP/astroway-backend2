@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\AstrologerModel\AstrologyVideo;
 use App\Models\Service;
 use App\Models\Contactus;
 use App\Models\Appointment;
@@ -297,6 +298,32 @@ class PageManagementController extends Controller
             ], 500);
         }
     }
+
+    public function videos(Request $request)
+    {
+        try {
+            // Check if service_no is passed
+            $limit = $request->get('service_no');
+
+            // Fetch all or limited services
+            $videos = AstrologyVideo::latest();
+            if ($limit) {
+                $videos = $videos->take($limit);
+            }
+
+            $videos = $videos->get();
+//            $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
+
+            return view('v2.frontend.pages.videos', compact('videos'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => $e->getMessage(),
+                'status' => 500,
+            ], 500);
+        }
+    }
+
 
 
     public function serviceShow(Request $request)

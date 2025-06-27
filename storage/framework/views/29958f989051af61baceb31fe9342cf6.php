@@ -8,23 +8,30 @@
     $youtube = \App\Models\AdminModel\SystemFlag::where('id', 29)->first();
 
 ?>
-
+<?php echo $__env->make('layout.components.divider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <section class="px_footer_wrapper">
     <div class="container">
         <div class="px_footer_inner">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12" style="transform: translateY(15px);">
                     <div class="px_footer_widget">
-                        <div class="px_footer_logo">
-                            <a href="<?php echo e(route('front.home')); ?>">
-                                <h2><?php echo e($appName->value); ?></h2>
-                            </a>
-                        </div>
-                        <p>No Structural Altration, No Demolition, Vastu Fault Corrections Without Breaking A Single
+                        
+
+                         <div class="px_footer_logo" style="display: flex;flex-direction:column; align-items: center;">
+                <img src="public/images/logo.png" alt="logo" srcset="" width="100"
+                    style="margin-right: 1em; width: 3.1em; scale:1.3;">
+                <h3 style="color: white; margin-bottom: unset; margin-top:0.5em;">Dhaval Zaveri</h3>
+
+            </div style="display: flex;flex-direction:column; align-items: center;">
+
+                        <p style="text-align: center;"> No Structural Altration, No Demolition, Vastu Fault Corrections Without Breaking A Single
                             Brick.</p>
 
-                        <div class="px_share_box">
-                            <p>Follow Us</p>
+                        <div class="px_share_box" style="
+    align-items: center;
+    display: flex;
+    justify-content: center;
+">
                             <ul>
                                 <li><a href="<?php echo e($facebook->value); ?>"><img src="public/images/svg/facebook.svg"
                                             alt=""></a>
@@ -77,7 +84,7 @@
                                             <path
                                                 d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" />
                                         </svg></span> About Us</a></li>
-                            <li><a href="#"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <li><a href="<?php echo e(route('front.videos')); ?>"><span><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"
                                             width="8" height="12" viewBox="0 0 8 12">
                                             <path
@@ -119,7 +126,11 @@
                         <ul class="px_contact_list">
                             <li>
                                 
-                                <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+</svg>
+                                 &nbsp;&nbsp;
                                 <p><?php echo e($siteAddress->value); ?></p>
                             </li>
                             <li>

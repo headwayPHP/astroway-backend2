@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1>{{ $service->service_title }}</h1>
+                    <h1 style="font-size:40px;">{{ $service->service_title }}</h1>
 
                     <ul class="breadcrumb">
                         <li><a href="{{ url('/') }}">Home</a></li>

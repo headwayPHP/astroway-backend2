@@ -23,7 +23,7 @@
                     <div class="px_journal_box_wrapper">
                         <form method="POST" action="{{ route('front.store.appointment') }}">
                             @csrf
-                            <h3 class="px_subheading">Appointment Form</h3>
+                            {{-- <h3 class="px_subheading">Appointment Form</h3> --}}
                             <div class="row">
                                 {{-- Name --}}
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -57,10 +57,12 @@
                                     <label>Gender</label>
                                     <div class="form-group px_select_box">
                                         <select class="form-control" name="gender" required>
-                                            <option value="">Choose a Gender 🡇</option>
+                                            <option value="">Choose a Gender </option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
+
+                                        <i class="fa fa-chevron-down"></i>
                                     </div>
                                 </div>
 
@@ -69,11 +71,13 @@
                                     <label>Time of Day</label>
                                     <div class="form-group px_select_box">
                                         <select class="form-control" name="time_of_day" required>
-                                            <option value="">Choose prefered time 🡇</option>
+                                            <option value="">Choose prefered time </option>
                                             <option value="morning">Morning</option>
                                             <option value="afternoon">Afternoon</option>
                                             <option value="evening">Evening</option>
                                         </select>
+
+                                        <i class="fa fa-chevron-down"></i>
                                     </div>
                                 </div>
 
@@ -82,11 +86,15 @@
                                     <label>Way to Reach</label>
                                     <div class="form-group px_select_box d-flex align-items-center">
                                         <select class="form-control" name="way_to_reach" required>
-                                            <option value="">Choose prefered way to reach 🡇</option>
+                                            <option value="">Choose prefered way to reach </option>
                                             <option value="phone">Phone</option>
                                             <option value="email">Email</option>
 
                                         </select>
+
+                                        <i class="fa fa-chevron-down"></i>
+
+                                        {{-- <i class="fa fa-chevron-down position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; color:#4b0000;"></i> --}}
 
                                     </div>
                                 </div>
@@ -97,19 +105,19 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Date" name="day"
+                                                <input class="form-control" max="31" type="number" placeholder="Date" name="day"
                                                     required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Month"
+                                                <input class="form-control" max="12" type="number" placeholder="Month"
                                                     name="month" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Year" name="year"
+                                                <input class="form-control" type="number" placeholder="Year" name="year"
                                                     required>
                                             </div>
                                         </div>
@@ -122,19 +130,19 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Hrs" name="hrs"
+                                                <input class="form-control" type="number" max="23" placeholder="Hrs" name="hrs"
                                                     required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Mins" name="mins"
+                                                <input class="form-control" type="number" max="59" placeholder="Mins" name="mins"
                                                     required>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Sec" name="secs"
+                                                <input class="form-control" max="59" type="number" placeholder="Sec" name="secs"
                                                     required>
                                             </div>
                                         </div>
@@ -153,13 +161,13 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label>Reason for Appointment</label>
                                     <div class="form-group">
-                                        <textarea placeholder="Message" class="form-control" name="reason"> required</textarea>
+                                        <textarea placeholder="Message" class="form-control" name="reason" required></textarea>
                                     </div>
                                 </div>
 
                                 {{-- Submit Button --}}
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px_padderTop20">
-                                    <button type="submit" class="px_btn">Make an Appointment</button>
+                                    <button type="submit" class="px_btn" style="transform:translateX(15px); color:var(--secondary-color); background-color: var(--primary-color);">Make an Appointment</button>
                                 </div>
                             </div>
                         </form>
@@ -169,7 +177,37 @@
             </div>
         </div>
     </section>
-
+    {{-- @include('layout.components.divider')
     @include('v2.frontend.components.whychooseus')
-    @include('v2.frontend.components.testimonials', ['testimonials' => $testimonials])
+    @include('layout.components.divider')
+    @include('v2.frontend.components.testimonials', ['testimonials' => $testimonials]) --}}
+
+
+    <style>
+    .px_select_box {
+        position: relative;
+    }
+
+    .px_select_box select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding-right: 2rem;
+    }
+
+    .px_select_box .fa-chevron-down {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #4b0000;
+    }
+
+
+    textarea.form-control {
+        resize:vertical; /* allow horizontal and vertical resizing */
+        min-height: 80px; /* optional: to ensure initial size */
+    }
+</style>
 @endsection

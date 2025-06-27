@@ -11,14 +11,36 @@ $(document).ready(function () {
 
 
   // customer slider
+    //   $('.px_customer_slider').slick({
+    //     infinite: false,
+    //     dots: true,
+    //     speed: 800,
+    //     slidesToShow: 2,
+    //     slidesToScroll: 2,
+    //     prevArrow: '<button type="button" class="slick-prev px_btn"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="12" height="16" viewBox="0 0 12 16"> <path d="M12.003,15.996 L-0.000,7.997 L12.002,-0.001 L10.062,7.997 L12.003,15.996 ZM10.102,2.762 L2.246,7.997 L10.102,13.233 L8.832,7.997 L10.102,2.762 ZM3.824,7.997 L8.256,5.043 L7.539,7.997 L8.256,10.951 L3.824,7.997 Z" class="cls-1"/> </svg></span></button>',
+    //     nextArrow: '<button type="button" class="slick-next px_btn"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="22" height="22" viewBox="0 0 12 16"><path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span></button>',
+    //     responsive: [
+    //       {
+    //         breakpoint: 991,
+    //         settings: {
+    //           slidesToShow: 1,
+    //           slidesToScroll: 1,
+    //           dots: true,
+    //           arrows: false
+    //         }
+    //       },
+    //     ]
+    //   });
+
+    $(document).ready(function () {
   $('.px_customer_slider').slick({
     infinite: false,
     dots: true,
     speed: 800,
     slidesToShow: 2,
     slidesToScroll: 2,
-    prevArrow: '<button type="button" class="slick-prev px_btn"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="12" height="16" viewBox="0 0 12 16"> <path d="M12.003,15.996 L-0.000,7.997 L12.002,-0.001 L10.062,7.997 L12.003,15.996 ZM10.102,2.762 L2.246,7.997 L10.102,13.233 L8.832,7.997 L10.102,2.762 ZM3.824,7.997 L8.256,5.043 L7.539,7.997 L8.256,10.951 L3.824,7.997 Z" class="cls-1"/> </svg></span></button>',
-    nextArrow: '<button type="button" class="slick-next px_btn"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="22" height="22" viewBox="0 0 12 16"><path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span></button>',
+      prevArrow: '<button type="button" class="slick-prev " style="fill: var(--primary-color);scale: 1.2;"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg></span></button>',
+      nextArrow: '<button type="button" class="slick-next "  style="fill: var(--primary-color);scale: 1.2;"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg></span></button>',
     responsive: [
       {
         breakpoint: 991,
@@ -28,9 +50,11 @@ $(document).ready(function () {
           dots: true,
           arrows: false
         }
-      },
+        }
     ]
   });
+    });
+
 
   // product slider
   $('.px_product_slider').slick({

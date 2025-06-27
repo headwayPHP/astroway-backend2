@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <h2 class="px_heading px_heading_center text-center">Book Your Online Consultation</h2>
                     <p class="px_font14 px_padderBottom10 text-center">Please fill out all required details for your
-                        Online Consultation. After submission, you'll be directed to the payment page to
+                        Online Consultation. <br />After submission, you'll be directed to the payment page to
                         complete your booking.</p>
 
                     <div class="px_journal_box_wrapper">
@@ -44,8 +44,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="birthplace">Birth Place *</label>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" id="birthplace" name="birthplace"
-                                            placeholder="City where you were born" required>
+                                        <input class="form-control " type="text" id="birthplace" name="birthplace"
+                                            placeholder="City where you were born"  required>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px_padderTop20 text-start">
-                                <button type="submit" class="px_btn">Proceed to Payment</button>
+                                <button type="submit" class="px_btn" style="transform:translateX(15px); color:var(--secondary-color); background-color: var(--primary-color);">Proceed to Payment</button>
                             </div>
                         </form>
                     </div>
@@ -140,4 +140,9 @@
             </div>
         </div>
     </section>
+    <style>
+        .form-control {
+            border-radius: 10px;
+        }
+    </style>
 @endsection

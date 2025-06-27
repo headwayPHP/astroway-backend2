@@ -46,7 +46,7 @@ class HomeController extends Controller
         $shop = $getsystemflag->where('name', 'Astromall')->first();
         $daily_horoscope = $getsystemflag->where('name', 'DailyHoroscope')->first();
 
-        $limitedServices = \App\Models\Service::latest()->take(8)->get();
+        $limitedServices = \App\Models\Service::latest()->take(3)->get();
         $clients = \Illuminate\Support\Facades\DB::table('clients')->where('status', 'active')->get();
         $testimonials = \Illuminate\Support\Facades\DB::table('testimonials')->where('status', 'active')->latest()->limit(3)->get();
 

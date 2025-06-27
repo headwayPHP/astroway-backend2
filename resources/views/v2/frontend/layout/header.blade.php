@@ -7,8 +7,8 @@
             </span>
             <div class="px_logo">
                 <img src="public/images/logo.png" alt="logo" srcset="" width="100"
-                    style="margin-right: 1em; width: 3.1em;">
-                <h1>Dhaval Zaveri</h1>
+                    style="margin-right: 1em; width: 3.1em; scale:1.3;">
+                <h3 style="color: white; margin-bottom: unset;">Dhaval Zaveri</h3>
 
             </div>
 
@@ -34,6 +34,10 @@
                             class="{{ request()->routeIs('front.aboutus') ? 'active' : '' }}">about</a>
                     </li>
                     <li>
+                        <a href="{{ route('front.videos') }}"
+                            class="{{ request()->routeIs('front.videos') ? 'active' : '' }}">videos</a>
+                    </li>
+                    <li>
                         <a href="{{ route('front.services') }}"
                             class="{{ request()->routeIs('front.services') ? 'active' : '' }}">services</a>
                     </li>
@@ -41,13 +45,18 @@
                         <a href="{{ route('front.remotebooking') }}"
                             class="{{ request()->routeIs('front.remotebooking') ? 'active' : '' }}">remote booking</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('front.appointment') }}"
                             class="{{ request()->routeIs('front.appointment') ? 'active' : '' }}">appointment</a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('front.contact') }}"
                             class="{{ request()->routeIs('front.contact') ? 'active' : '' }}">contact</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('login.index') }}"
+                            class="{{ request()->routeIs('login.index') ? 'active' : '' }}">login</a>
                     </li>
 
                 </ul>
@@ -55,7 +64,16 @@
 
             </div>
 
+            <a href="{{ route('front.appointment') }}"
+                class="{{ request()->routeIs('front.appointment') ? 'active' : '' }}"
+                style=" color: var(--primary-color) !important; background-color: var(--secondary-color); border-radius: 0.25em; height: fit-content; padding: 0.5em 1em;">
+                Appointment
+            </a>
+
+
         </div>
         <span class="px_body_overlay"></span>
     </div>
 </div>
+
+

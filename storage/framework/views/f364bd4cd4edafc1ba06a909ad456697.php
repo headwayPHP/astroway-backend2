@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1><?php echo e($service->service_title); ?></h1>
+                    <h1 style="font-size:40px;"><?php echo e($service->service_title); ?></h1>
 
                     <ul class="breadcrumb">
                         <li><a href="<?php echo e(url('/')); ?>">Home</a></li>

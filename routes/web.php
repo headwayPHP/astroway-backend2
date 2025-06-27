@@ -568,6 +568,7 @@ Route::get('appointment', [FrontendPageManagementController::class, 'appointment
 Route::post('saveAppointment', [FrontendPageManagementController::class, 'saveAppointment'])->name('front.store.appointment');
 
 Route::get('/services', [FrontendPageManagementController::class, 'services'])->name('front.services');
+Route::get('/videos', [FrontendPageManagementController::class, 'videos'])->name('front.videos');
 Route::get('/services-details', [FrontendPageManagementController::class, 'serviceShow'])->name('front.servicedetail');
 
 

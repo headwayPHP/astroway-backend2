@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <h1 class="px_heading">About Dhaval Zaveri</h1>
-                    <p>Since last 20 years of his Professional journey, He planned thousands of Vastu Shastra based
+                    <p>Since last 20+ years of his Professional journey, He planned thousands of Vastu Shastra based
                         Bungalows, Flats, Tenaments, Industries, Factories, Showrooms successfully.
                         Dhaval has expertise in resolving Vastu Faults of buildings without Demolition of any
                         Structure of building, this unique technique is “Vastu Fault Correction without Demolition”
@@ -41,7 +41,7 @@
                     <h4 id="done-10-000-case-studies">Done 10,000+ Case Studies</h4>
                     <h4 id="5000-satisfied-clients">5000+ Satisfied Clients</h4>
                     <p>MISSION AND VISION</p>
-                    <ul>
+                    <ul style="list-style: circle">
                         <li>Spread happiness, wealth and peace by using Indian wisdom of Energy Dynamics on human
                             being.</li>
                         <li>To create new horizon in this field and to be inspiration for others.</li>
@@ -66,13 +66,15 @@
                         </span>
                         <div>
                             <h5 class="px_white">Contact Dhaval Zaveri Now.</h5>
-                            <h1 class="px_orange">+ (91) 9825744633</h1>
+                            <h1 class="px_white">+ (91) 9825744633</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    {{-- @include('layout.components.divider')
     @include('v2.frontend.components.whychooseus')
-    @include('v2.frontend.components.testimonials', $testimonials)
+    @include('layout.components.divider')
+    @include('v2.frontend.components.testimonials', $testimonials) --}}
 @endsection

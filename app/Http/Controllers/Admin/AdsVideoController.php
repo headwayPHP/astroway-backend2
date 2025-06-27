@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AstrologerModel\AstrologyVideo;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -27,43 +29,53 @@ class AdsVideoController extends Controller
     {
         try {
             if (Auth::guard('web')->check()) {
-                if (request('coverImage')) {
-                    $image = base64_encode(file_get_contents($req->file('coverImage')));
-                } else {
-                    $image = null;
-                }
-                $adsVideo = AstrologyVideo::create([
-                    'youtubeLink' => $req->youtubeLink,
-                    'coverImage' => '',
-                    'videoTitle' => $req->videoTitle,
-                    'createdBy' => Auth()->user()->id,
-                    'modifiedBy' => Auth()->user()->id,
+                $req->validate([
+                    'youtubeLink' => 'required|url',
+                    'videoTitle' => 'required|string',
+                    'coverImage' => 'required|string|starts_with:data:image'
                 ]);
-                if ($image) {
-                    if (Str::contains($image, 'storage')) {
-                        $path = $image;
-                    } else {
-                        $time = Carbon::now()->timestamp;
-                        $destinationpath = 'public/storage/images/';
-                        $imageName = 'coverImage_' . $adsVideo->id;
-                        $path = $destinationpath . $imageName . $time . '.png';
-                        File::delete($path);
-                        file_put_contents($path, base64_decode($image));
-                    }
-                } else {
-                    $path = null;
+
+                $imageData = $req->coverImage;
+
+                // Extract base64 and extension
+                [$type, $imageBase64] = explode(';base64,', $imageData);
+                $extension = explode('/', $type)[1];
+
+                $imageBinary = base64_decode($imageBase64);
+                if ($imageBinary === false) {
+                    throw new Exception('Invalid image data');
                 }
-                $adsVideo->coverImage = $path;
-                $adsVideo->update();
-                return redirect()->route('adsVideos');
+
+                // Generate filename and directory
+                $time = Carbon::now()->timestamp;
+                $imageName = 'coverImage_' . $time . '.' . $extension;
+                $publicFolder = public_path('storage/images');
+
+                if (!file_exists($publicFolder)) {
+                    mkdir($publicFolder, 0755, true);
+                }
+
+                $fullPath = $publicFolder . DIRECTORY_SEPARATOR . $imageName;
+                file_put_contents($fullPath, $imageBinary);
+
+                $dbPath = 'public/storage/images/' . $imageName;
+
+                AstrologyVideo::create([
+                    'youtubeLink' => $req->youtubeLink,
+                    'coverImage' => $dbPath,
+                    'videoTitle' => $req->videoTitle,
+                    'createdBy' => auth()->user()->id,
+                    'modifiedBy' => auth()->user()->id,
+                ]);
+
+                return redirect()->route('adsVideos')->with('success', 'Video added successfully');
             } else {
                 return redirect(LOGINPATH);
             }
         } catch (Exception $e) {
-            return dd($e->getMessage());
+            return back()->withInput()->with('error', 'Error: ' . $e->getMessage());
         }
     }
-
     //Get
     public function getAdsVideo(Request $request)
     {
@@ -108,44 +120,64 @@ class AdsVideoController extends Controller
     {
         try {
             if (Auth::guard('web')->check()) {
+                $req->validate([
+                    'filed_id' => 'required|integer',
+                    'youtubeLink' => 'required|url',
+                    'videoTitle' => 'required|string',
+                    'coverImage' => 'nullable|string',
+                ]);
+
                 $adsVideo = AstrologyVideo::find($req->filed_id);
-                if (request('coverImage')) {
-                    $image = base64_encode(file_get_contents($req->file('coverImage')));
-                } elseif ($adsVideo && $adsVideo->coverImage) {
-                    $image = $adsVideo->coverImage;
-                } else {
-                    $image = null;
+                if (!$adsVideo) {
+                    return back()->with('error', 'Video not found');
                 }
-                if ($adsVideo) {
-                    if ($image) {
-                        $time = Carbon::now()->timestamp;
-                        if (Str::contains($image, 'storage')) {
-                            $path = $image;
-                        } else {
-                            $time = Carbon::now()->timestamp;
-                            $destinationpath = 'public/storage/images/';
-                            $imageName = 'coverImage_' . $req->filed_id . $time;
-                            $path = $destinationpath . $imageName . $time . '.png';
-                            File::delete($adsVideo->coverImage);
-                            file_put_contents($path, base64_decode($image));
-                        }
-                    } else {
-                        $path = null;
+
+                $coverImage = $adsVideo->coverImage; // fallback to old image path
+
+                if ($req->has('coverImage') && Str::startsWith($req->coverImage, 'data:image')) {
+                    // New base64 image provided
+                    [$type, $imageBase64] = explode(';base64,', $req->coverImage);
+                    $extension = explode('/', $type)[1];
+
+                    $imageBinary = base64_decode($imageBase64);
+                    if ($imageBinary === false) {
+                        throw new Exception('Invalid image data');
                     }
-                    $adsVideo->youtubeLink = $req->youtubeLink;
-                    $adsVideo->coverImage = $path;
-                    $adsVideo->videoTitle = $req->videoTitle;
-                    $adsVideo->update();
-                    return redirect()->route('adsVideos');
+
+                    // Delete old image if exists
+                    if ($adsVideo->coverImage && File::exists(public_path($adsVideo->coverImage))) {
+                        File::delete(public_path($adsVideo->coverImage));
+                    }
+
+                    // Save new image
+                    $time = Carbon::now()->timestamp;
+                    $imageName = 'coverImage_' . $req->filed_id . '_' . $time . '.' . $extension;
+                    $publicFolder = public_path('storage/images');
+
+                    if (!file_exists($publicFolder)) {
+                        mkdir($publicFolder, 0755, true);
+                    }
+
+                    $fullPath = $publicFolder . DIRECTORY_SEPARATOR . $imageName;
+                    file_put_contents($fullPath, $imageBinary);
+
+                    $coverImage = 'public/storage/images/' . $imageName;
                 }
+
+                $adsVideo->youtubeLink = $req->youtubeLink;
+                $adsVideo->videoTitle = $req->videoTitle;
+                $adsVideo->coverImage = $coverImage;
+                $adsVideo->modifiedBy = auth()->user()->id;
+                $adsVideo->save();
+
+                return redirect()->route('adsVideos')->with('success', 'Video updated successfully');
             } else {
                 return redirect(LOGINPATH);
             }
 
         } catch (Exception $e) {
-            return dd($e->getMessage());
+            return back()->with('error', 'Error: ' . $e->getMessage());
         }
-
     }
 
     public function videoStatus(Request $request)

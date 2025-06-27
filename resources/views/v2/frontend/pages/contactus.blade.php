@@ -23,7 +23,7 @@
                                     <div class="px_info">
                                         <a class="px_margin0 px_font14"
                                             href="tel:+91{{ preg_replace('/\D/', '', $siteNumber->value) }}">
-                                            <i class="fas fa-phone-alt"></i> &nbsp;&nbsp; + (91)
+                                            <i class="fas fa-phone"></i> &nbsp;&nbsp; + (91)
                                             {{ $siteNumber->value }}</a>
                                         <br>
                                         <a class="px_margin0 px_font14" href="mailto:{{ $siteEmail->value }}"
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="px_contact_form px_form_style">
-                        <h3 class="px_subheading px_form_title">Have A Question?</h3>
+                        <h3 class="px_subheading px_form_title" style="font-size: 32px;">Have A Question?</h3>
                         <form id="contactForm" class="px_needs-validation" method="POST"
                             action="{{ route('front.store.contact') }}" novalidate>
                             @csrf
@@ -69,7 +69,7 @@
                             <!-- Message -->
                             <div class="form-group px_input_group" style="border:none;">
                                 <label for="message" class="px_input_label">Your Message *</label>
-                                <textarea class="form-control px_input_field px_textarea @error('contact_message') is-invalid @enderror" id="message"
+                                <textarea class="form-control px_input_field px_textarea  @error('contact_message') is-invalid @enderror" id="message"
                                     name="contact_message" rows="5" required>{{ old('contact_message') }}</textarea>
                                 @error('contact_message')
                                     <small class="text-white">{{ $message }}</small>
@@ -78,7 +78,8 @@
 
                             <!-- Submit Button -->
                             <div class="px_form_actions" style="transform: translateX(20px);">
-                                <button type="submit" class="px_btn px_btn_primary px_submit_btn mt-4">
+                                <button type="submit" class="px_btn px_btn_primary px_submit_btn mt-4"
+                                    style="color:var(--secondary-color); background-color: var(--primary-color);">
                                     <span class="px_btn_text">Submit</span>
                                     <span class="px_btn_loader" style="display:none;">
                                         <svg class="px_spinner" viewBox="0 0 50 50">
@@ -105,4 +106,14 @@
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
     </div>
+
+
+    <style>
+        .px_textarea {
+            resize: vertical;
+            /* allow horizontal and vertical resizing */
+            min-height: 80px;
+            /* optional: to ensure initial size */
+        }
+    </style>
 @endsection

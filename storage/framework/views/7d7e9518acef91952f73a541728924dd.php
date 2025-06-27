@@ -1,5 +1,4 @@
-<section
-    class="px_customer_wrapper px_customer_wrapper_new px_padderTop80 px_padderBottom80 px-dark-section-new px-bg-none">
+<section class="px_customer_wrapper px_customer_wrapper_new px_padderTop80 px_padderBottom80 px-dark-section-new px-bg-none">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -11,20 +10,22 @@
                 </p>
             </div>
 
-            <div class="row px_customer_slider">
-                <?php $__currentLoopData = $testimonials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $testimonial): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="px_customer_box text-center px-light-section-new">
-                            <span class="px_customer_img">
-                                <img src="<?php echo e(asset('storage/app/public/' . $testimonial->image)); ?>" alt="" style="width:82px;height:81px;">
-                                <span><img src="<?php echo e(asset('public/images/svg/quote1.svg')); ?>" alt=""></span>
-                            </span>
-                            <p class="px_margin0" style="min-height: 10em;"><?php echo e($testimonial->testimonial); ?></p>
-                            <h3><?php echo e($testimonial->name); ?></h3>
-                            <p class="px_margin0"><?php echo e($testimonial->profession); ?></p>
+            <div class="col-lg-12">
+                <div class="px_customer_slider">
+                    <?php $__currentLoopData = $testimonials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $testimonial): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="px_customer_slide">
+                            <div class="px_customer_box text-center px-light-section-new">
+                                <span class="px_customer_img">
+                                    <img src="<?php echo e(asset('storage/app/public/' . $testimonial->image)); ?>" alt="" style="width:82px;height:81px;">
+                                    <span><img src="<?php echo e(asset('public/images/svg/quote1.svg')); ?>" alt=""></span>
+                                </span>
+                                <p class="px_margin0" style="min-height: 8em"><?php echo e($testimonial->testimonial); ?></p>
+                                <h3><?php echo e($testimonial->name); ?></h3>
+                                <p class="px_margin0"><?php echo e($testimonial->profession); ?></p>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
             </div>
         </div>
     </div>

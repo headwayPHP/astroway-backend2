@@ -37,6 +37,9 @@
     <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
     <script src="{{ asset('build/assets/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="https://unpkg.com/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/cropperjs@1.5.13/dist/cropper.min.js"></script>
+
     <style>
         .disabled {
             pointer-events: none

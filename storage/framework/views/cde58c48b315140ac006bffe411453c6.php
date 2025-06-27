@@ -12,40 +12,34 @@
     </div>
     <?php if(count($adsVideo) > 0): ?>
         <div class="intro-y grid grid-cols-12 gap-6 mt-5 withoutsearch">
-            <!-- BEGIN: Blog Layout -->
-
             <?php $__currentLoopData = $adsVideo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box fitbox">
-
-
                     <div class="p-5" style="word-break:break-all">
                         <div class="h-40 2xl:h-56 image-fit">
                             <img alt="Ads Video image" class="rounded-md" src="<?php echo e($video['coverImage']); ?>">
                         </div>
                         <a target="_blank"href="<?php echo e($video['youtubeLink']); ?>" class="block font-medium text-base mt-5"
-                            style="color: blue;height:60px"><?php echo e($video['youtubeLink']); ?></a>
+                           style="color: blue;height:60px"><?php echo e($video['youtubeLink']); ?></a>
                         <div class="text-slate-600 dark:text-slate-500 mt-2"><?php echo e($video['videoTitle']); ?></div>
                     </div>
-                    <div
-                        class="flex justify-center lg:justify-center items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-
+                    <div class="flex justify-center lg:justify-center items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <a id="editbtn" href="javascript:;"
-                            onclick="editbtn(<?php echo e($video['id']); ?> , '<?php echo e($video['youtubeLink']); ?>','<?php echo e($video['coverImage']); ?>', '<?php echo e($video['videoTitle']); ?>')"
-                            class="flex items-center mr-3 " data-tw-target="#edit-modal" data-tw-toggle="modal"><i
-                                data-lucide="check-square" class="editbtn w-4 h-4 mr-1"></i>Edit</a>
+                           onclick="editbtn(<?php echo e($video['id']); ?> , '<?php echo e($video['youtubeLink']); ?>','<?php echo e($video['coverImage']); ?>', '<?php echo e($video['videoTitle']); ?>')"
+                           class="flex items-center mr-3 " data-tw-target="#edit-modal" data-tw-toggle="modal">
+                            <i data-lucide="check-square" class="editbtn w-4 h-4 mr-1"></i>Edit
+                        </a>
                         <a id="deletebtn" href="javascript:;" onclick="deletebtn(<?php echo e($video['id']); ?>)"
-                            class="flex items-center mr-3 " data-tw-target="#deleteModal" data-tw-toggle="modal"><i
-                                data-lucide="trash-2" class="deletebtn w-4 h-4 mr-1"></i>Delete</a>
-                        <div
-                            class="form-check form-switch justify-center w-full sm:w-auto sm:ml-auto
-                                 mt-3 sm:mt-0">
+                           class="flex items-center mr-3 " data-tw-target="#deleteModal" data-tw-toggle="modal">
+                            <i data-lucide="trash-2" class="deletebtn w-4 h-4 mr-1"></i>Delete
+                        </a>
+                        <div class="form-check form-switch justify-center w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
                             <input class="toggle-class show-code form-check-input mr-0 ml-3" type="checkbox"
-                                href="javascript:;" data-tw-toggle="modal" data-onstyle="success" data-offstyle="danger"
-                                data-toggle="toggle" data-on="Active" data-off="InActive"
-                                <?php echo e($video['isActive'] ? 'checked' : ''); ?>
+                                   href="javascript:;" data-tw-toggle="modal" data-onstyle="success" data-offstyle="danger"
+                                   data-toggle="toggle" data-on="Active" data-off="InActive"
+                                   <?php echo e($video['isActive'] ? 'checked' : ''); ?>
 
-                                onclick="editVideoStatus(<?php echo e($video['id']); ?>,<?php echo e($video['isActive']); ?>)"
-                                href="$video['id']" data-tw-target="#verified">
+                                   onclick="editVideoStatus(<?php echo e($video['id']); ?>,<?php echo e($video['isActive']); ?>)"
+                                   href="$video['id']" data-tw-target="#verified">
                         </div>
                     </div>
                 </div>
@@ -61,49 +55,46 @@
             </div>
         </div>
     <?php endif; ?>
+
+    <!-- Add Video Modal -->
     <div id="add-video" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="font-medium text-base mr-auto">Add AdsVideo</h2>
                 </div>
-                <form action="<?php echo e(route('addAdsVideoApi')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('addAdsVideoApi')); ?>" method="POST" enctype="multipart/form-data" onsubmit="return prepareCroppedImage();">
                     <?php echo csrf_field(); ?>
                     <div id="input" class="p-5">
                         <div class="preview">
                             <div class="mt-3">
                                 <div class="sm:grid grid-cols gap-2">
                                     <div class="input">
-                                        <div>
-                                            <label for="youtubeLink" class="form-label">Link</label>
-                                            <input onkeypress="return validateJavascript(event);" type="text"
-                                                name="youtubeLink" id="youtubeLink" class="form-control"
-                                                placeholder="YouTube Link" required>
-                                        </div>
+                                        <label for="youtubeLink" class="form-label">Link</label>
+                                        <input onkeypress="return validateJavascript(event);" type="text"
+                                               name="youtubeLink" id="youtubeLink" class="form-control"
+                                               placeholder="YouTube Link" required>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-12 gap-6">
                                     <div class="intro-y col-span-12">
-                                        <div>
-                                            <label for="coverImage" class="form-label mt-2">Cover Image</label>
-                                            <img id="thumb" width="150px" alt="coverImage" style="display:none" />
-                                            <input type="file" class="mt-2" name="coverImage" id="image"
-                                                onchange="preview()" accept="image/*" required>
-                                        </div>
+                                        <label for="coverImage" class="form-label mt-2">Cover Image</label>
+                                        <input type="file" class="mt-2" id="imageInput" accept="image/*" required>
+                                        <input type="hidden" name="coverImage" id="croppedImageData">
+                                        <img id="thumb" width="150px" alt="coverImage" style="display:none; margin-top:10px;" />
                                     </div>
                                 </div>
                                 <div class="sm:grid grid-cols gap-2 py-4">
                                     <div class="input">
-                                        <div>
-                                            <label for="videoTitle" class="form-label">Video Title</label>
-                                            <input onkeypress="return validateJavascript(event);" type="text"
-                                                name="videoTitle" id="videoTitle" class="form-control"
-                                                placeholder="Video Title" required>
-                                        </div>
+                                        <label for="videoTitle" class="form-label">Video Title</label>
+                                        <input onkeypress="return validateJavascript(event);" type="text"
+                                               name="videoTitle" id="videoTitle" class="form-control"
+                                               placeholder="Video Title" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-5"><button class="btn btn-primary shadow-md mr-2">Add Ads Video</button>
+                            <div class="mt-5">
+                                <button class="btn btn-primary shadow-md mr-2">Add Ads Video</button>
                             </div>
                         </div>
                     </div>
@@ -111,13 +102,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Edit Video Modal -->
     <div id="edit-modal" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="font-medium text-base mr-auto">Edit AdsVideo</h2>
                 </div>
-                <form action="<?php echo e(route('editAdsVideoApi')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('editAdsVideoApi')); ?>" method="POST" enctype="multipart/form-data" onsubmit="return prepareCroppedImageEdit();">
                     <?php echo csrf_field(); ?>
                     <div id="input" class="p-5">
                         <div class="preview">
@@ -128,8 +121,8 @@
                                             <input type="hidden" id="filed_id" name="filed_id">
                                             <label for="youtubeLink" class="form-label">Link</label>
                                             <input onkeypress="return validateJavascript(event);" type="text"
-                                                name="youtubeLink" id="id" class="form-control"
-                                                placeholder="Name" required>
+                                                   name="youtubeLink" id="id" class="form-control"
+                                                   placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-12 gap-6">
@@ -137,9 +130,9 @@
                                             <div>
                                                 <label for="coverImage" class="form-label">Cover Image</label>
                                                 <img id="thumbs" width="150px" alt="coverImage"
-                                                    onerror="this.style.display='none';" />
-                                                <input type="file" class="mt-2" name="coverImage" id="gid"
-                                                    onchange="previews()" accept="image/*">
+                                                     onerror="this.style.display='none';" />
+                                                <input type="file" class="mt-2" id="editImageInput" accept="image/*">
+                                                <input type="hidden" name="coverImage" id="croppedImageDataEdit">
                                             </div>
                                         </div>
                                     </div>
@@ -148,14 +141,15 @@
                                             <div>
                                                 <label for="videoTitle" class="form-label">Video Title</label>
                                                 <input onkeypress="return validateJavascript(event);" type="text"
-                                                    name="videoTitle" id="aid" class="form-control"
-                                                    placeholder="Video Title" required>
+                                                       name="videoTitle" id="aid" class="form-control"
+                                                       placeholder="Video Title" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-5"><button class="btn btn-primary shadow-md mr-2">Save</button>
+                            <div class="mt-5">
+                                <button class="btn btn-primary shadow-md mr-2">Save</button>
                             </div>
                         </div>
                     </div>
@@ -163,10 +157,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Crop Modal (shared between add and edit) -->
+    <div id="cropModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center" style="z-index: 9999; display:none;">
+        <div class="bg-white p-4 rounded shadow-lg max-w-md w-full">
+            <div class="text-center font-bold mb-2">Crop Image</div>
+            <img id="imageToCrop" style="max-width: 100%;">
+            <div class="mt-3 text-center">
+                <button type="button" class="btn btn-success" onclick="cropImage()">Crop</button>
+                <button type="button" class="btn btn-secondary" onclick="closeCropModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <?php if($totalRecords > 0): ?>
-        <div class="d-inline text-slate-500 pagecount">Showing <?php echo e($start); ?> to <?php echo e($end); ?> of
-            <?php echo e($totalRecords); ?> entries</div>
+        <div class="d-inline text-slate-500 pagecount">Showing <?php echo e($start); ?> to <?php echo e($end); ?> of <?php echo e($totalRecords); ?> entries</div>
     <?php endif; ?>
+
     <?php if(count($adsVideo) > 0): ?>
         <div class="d-inline addbtn intro-y col-span-12 ">
             <nav class="w-full sm:w-auto sm:mr-auto" aria-label="adsVideo">
@@ -178,8 +185,7 @@
                     </li>
                     <?php for($i = 0; $i < $totalPages; $i++): ?>
                         <li class="page-item <?php echo e($page == $i + 1 ? 'active' : ''); ?> ">
-                            <a class="page-link"
-                                href="<?php echo e(route('adsVideos', ['page' => $i + 1])); ?>"><?php echo e($i + 1); ?></a>
+                            <a class="page-link" href="<?php echo e(route('adsVideos', ['page' => $i + 1])); ?>"><?php echo e($i + 1); ?></a>
                         </li>
                     <?php endfor; ?>
                     <li class="page-item <?php echo e($page == $totalPages ? 'disabled' : ''); ?>">
@@ -191,6 +197,8 @@
             </nav>
         </div>
     <?php endif; ?>
+
+    <!-- Status Modal -->
     <div id="verified" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -202,16 +210,17 @@
                     <form action="<?php echo e(route('videoStatusApi')); ?>" method="POST" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <input type="hidden" id="status_id" name="status_id">
-                        <div class="px-5 pb-8 text-center"><button class="btn btn-primary mr-3" id="btnActive">Yes,
-                                Active it!
-                            </button><a type="button" data-tw-dismiss="modal" class="btn btn-secondary w-24"
-                                onclick="location.reload();">Cancel</a>
+                        <div class="px-5 pb-8 text-center">
+                            <button class="btn btn-primary mr-3" id="btnActive">Yes, Active it!</button>
+                            <a type="button" data-tw-dismiss="modal" class="btn btn-secondary w-24" onclick="location.reload();">Cancel</a>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
+
+    <!-- Delete Modal -->
     <div id="deleteModal" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -219,16 +228,14 @@
                     <div class="p-5 text-center">
                         <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
                         <div class="text-3xl mt-5">Are you sure?</div>
-                        <div class="text-slate-500 mt-2">Do you really want to delete these records? <br>This process
-                            cannot be undone.</div>
+                        <div class="text-slate-500 mt-2">Do you really want to delete these records? <br>This process cannot be undone.</div>
                     </div>
                     <form action="<?php echo e(route('deleteVideo')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('DELETE'); ?>
                         <input type="hidden" id="del_id" name="del_id">
                         <div class="px-5 pb-8 text-center">
-                            <button type="button" data-tw-dismiss="modal"
-                                class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
                             <button class="btn btn-danger w-24">Delete</button>
                         </div>
                     </form>
@@ -241,16 +248,20 @@
 <?php $__env->startSection('script'); ?>
     <script type="text/javascript">
         function editbtn($id, $youtubeLink, $coverImage, $videoTitle) {
-
-            var id = $id;
-            var gid = $id;
-            var aid = $id;
-            $cid = id;
-
-            $('#filed_id').val($cid);
+            $('#filed_id').val($id);
             $('#id').val($youtubeLink);
             $('#aid').val($videoTitle);
-            document.getElementById("thumbs").src = "/" + $coverImage;
+
+            // Show current image if it exists
+            if ($coverImage) {
+                document.getElementById("thumbs").src = "/" + $coverImage;
+                document.getElementById("thumbs").style.display = "block";
+            } else {
+                document.getElementById("thumbs").style.display = "none";
+            }
+
+            // Clear any previous cropped data
+            document.getElementById("croppedImageDataEdit").value = "";
         }
 
         function deletebtn($id) {
@@ -260,19 +271,8 @@
         function editVideo($id, $name) {
             var id = $id;
             $fid = id;
-
             $('#status_id').val($fid);
             $('#id').val($name);
-        }
-
-        function preview() {
-            document.getElementById("thumb").style.display = "block";
-            thumb.src = URL.createObjectURL(event.target.files[0]);
-        }
-
-        function previews() {
-            document.getElementById("thumbs").style.display = "block";
-            thumbs.src = URL.createObjectURL(event.target.files[0]);
         }
 
         function editVideoStatus($id, $isActive) {
@@ -280,11 +280,8 @@
             $fid = id;
             var active = $isActive ? 'Inactive' : 'Active';
             document.getElementById('active').innerHTML = "You want to " + active;
-            document.getElementById('btnActive').innerHTML = "Yes, " +
-                active + " it";
-
+            document.getElementById('btnActive').innerHTML = "Yes, " + active + " it";
             $('#status_id').val($fid);
-            $('#id').val($name);
         }
 
         function validateJavascript(event) {
@@ -296,10 +293,130 @@
             }
         }
     </script>
+
     <script>
         $(window).on('load', function() {
             $('.loader').hide();
-        })
+        });
+
+        // Cropping functionality
+        let cropper;
+        let editCropper;
+        const imageInput = document.getElementById('imageInput');
+        const editImageInput = document.getElementById('editImageInput');
+        const imageToCrop = document.getElementById('imageToCrop');
+        const cropModal = document.getElementById('cropModal');
+        const thumb = document.getElementById('thumb');
+        const thumbs = document.getElementById('thumbs');
+        const croppedImageData = document.getElementById('croppedImageData');
+        const croppedImageDataEdit = document.getElementById('croppedImageDataEdit');
+
+        // Add form image handling
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imageToCrop.src = event.target.result;
+                    cropModal.style.display = 'flex';
+                    setTimeout(() => {
+                        if (cropper) cropper.destroy();
+                        cropper = new Cropper(imageToCrop, {
+                            aspectRatio: 1,
+                            viewMode: 1
+                        });
+                    }, 100);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Edit form image handling
+        editImageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imageToCrop.src = event.target.result;
+                    cropModal.style.display = 'flex';
+                    setTimeout(() => {
+                        if (editCropper) editCropper.destroy();
+                        editCropper = new Cropper(imageToCrop, {
+                            aspectRatio: 1,
+                            viewMode: 1
+                        });
+                    }, 100);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function cropImage() {
+            // Determine which cropper is active (add or edit)
+            const activeCropper = editCropper || cropper;
+
+            const canvas = activeCropper.getCroppedCanvas({
+                width: 300,
+                height: 300
+            });
+
+            // Determine which thumbnail and hidden field to update
+            const thumbElement = editCropper ? thumbs : thumb;
+            const hiddenField = editCropper ? croppedImageDataEdit : croppedImageData;
+
+            thumbElement.src = canvas.toDataURL('image/png');
+            thumbElement.style.display = 'block';
+
+            // Convert canvas to blob and create a file object
+            canvas.toBlob(function(blob) {
+                const file = new File([blob], 'cropped-image.png', { type: 'image/png' });
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+
+                // Update the correct input
+                const targetInput = editCropper ? editImageInput : imageInput;
+                targetInput.files = dataTransfer.files;
+
+                // Store base64 in hidden field
+                hiddenField.value = canvas.toDataURL('image/png');
+            }, 'image/png');
+
+            // Clean up
+            activeCropper.destroy();
+            if (editCropper) editCropper = null;
+            if (cropper) cropper = null;
+            cropModal.style.display = 'none';
+        }
+
+        function closeCropModal() {
+            if (editCropper) editCropper.destroy();
+            if (cropper) cropper.destroy();
+            cropModal.style.display = 'none';
+
+            // Reset the file inputs
+            imageInput.value = null;
+            editImageInput.value = null;
+        }
+
+        function prepareCroppedImage() {
+            if (!croppedImageData.value) {
+                alert('Please crop the image before submitting.');
+                return false;
+            }
+            return true;
+        }
+
+        function prepareCroppedImageEdit() {
+            if (editImageInput.files.length === 0 && !croppedImageDataEdit.value) {
+                // No new image selected, proceed with form submission
+                return true;
+            }
+            if (!croppedImageDataEdit.value) {
+                alert('Please crop the image before submitting.');
+                return false;
+            }
+            return true;
+        }
     </script>
 <?php $__env->stopSection(); ?>
 

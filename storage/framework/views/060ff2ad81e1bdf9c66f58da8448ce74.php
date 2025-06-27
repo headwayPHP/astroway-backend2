@@ -7,8 +7,8 @@
             </span>
             <div class="px_logo">
                 <img src="public/images/logo.png" alt="logo" srcset="" width="100"
-                    style="margin-right: 1em; width: 3.1em;">
-                <h1>Dhaval Zaveri</h1>
+                    style="margin-right: 1em; width: 3.1em; scale:1.3;">
+                <h3 style="color: white; margin-bottom: unset;">Dhaval Zaveri</h3>
 
             </div>
 
@@ -25,6 +25,10 @@
                             class="<?php echo e(request()->routeIs('front.aboutus') ? 'active' : ''); ?>">about</a>
                     </li>
                     <li>
+                        <a href="<?php echo e(route('front.videos')); ?>"
+                            class="<?php echo e(request()->routeIs('front.videos') ? 'active' : ''); ?>">videos</a>
+                    </li>
+                    <li>
                         <a href="<?php echo e(route('front.services')); ?>"
                             class="<?php echo e(request()->routeIs('front.services') ? 'active' : ''); ?>">services</a>
                     </li>
@@ -32,13 +36,15 @@
                         <a href="<?php echo e(route('front.remotebooking')); ?>"
                             class="<?php echo e(request()->routeIs('front.remotebooking') ? 'active' : ''); ?>">remote booking</a>
                     </li>
-                    <li>
-                        <a href="<?php echo e(route('front.appointment')); ?>"
-                            class="<?php echo e(request()->routeIs('front.appointment') ? 'active' : ''); ?>">appointment</a>
-                    </li>
+                    
                     <li>
                         <a href="<?php echo e(route('front.contact')); ?>"
                             class="<?php echo e(request()->routeIs('front.contact') ? 'active' : ''); ?>">contact</a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo e(route('login.index')); ?>"
+                            class="<?php echo e(request()->routeIs('login.index') ? 'active' : ''); ?>">login</a>
                     </li>
 
                 </ul>
@@ -46,8 +52,17 @@
 
             </div>
 
+            <a href="<?php echo e(route('front.appointment')); ?>"
+                class="<?php echo e(request()->routeIs('front.appointment') ? 'active' : ''); ?>"
+                style=" color: var(--primary-color) !important; background-color: var(--secondary-color); border-radius: 0.25em; height: fit-content; padding: 0.5em 1em;">
+                Appointment
+            </a>
+
+
         </div>
         <span class="px_body_overlay"></span>
     </div>
 </div>
+
+
 <?php /**PATH C:\xampp\htdocs\astroway-backend2\resources\views/v2/frontend/layout/header.blade.php ENDPATH**/ ?>
